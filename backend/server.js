@@ -62,10 +62,10 @@ app.get("/api/data_wilayah/:id", async (req, res) => {
   const { id } = req.params;
   try {
     const query = `
-      SELECT namobj, wadmkc, wadmkd, ije_pangan, ije_air, ije_serat, ije_sdgen, ije_udara, ije_iklim, ije_mitiga, ije_tataai, ije_murni, ije_serbuk, ije_hama, ije_kehati, ije_tanah, ije_primer, ije_hara, ik, ikb, ikc, ikl, ikk, efpangan, efair, efttair, normalisas, penduduk30, penduduk40, penduduk50, bod21, cod21, tss21, bod30, cod30, tss30, bod40, cod40, tss40, bod50, cod50, tss50, ddlhpang_1, ddlhair, sampah_21, sampah_30, sampah_40, sampah_50, tinja_21, tinja_30, tinja_40, tinja_50, 
-      rataijepan, rataijeair, rataijeser, rataijesdg, rataijeuda, rataijeikl, rataijemit, rataijetat, rataijemur, rataijes_1, rataijeham, rataijekeh, rataijetan, rataijepri, rataijehar, rataik, rataikb, rataikc, rataikl, rataikk, ratapendud, ratabod21, ratacod21, ratatss21, rataddlhpa, rataddlhai, rata_sampa, rata_tinja
+      SELECT namobj, wadmkc, wadmkd, ije_pangan, ije_air, ije_serat, ije_sdgen, ije_udara, ije_iklim, ije_mitiga, ije_tataai, ije_murni, ije_serbuk, ije_hama, ije_kehati, ije_tanah, ije_primer, ije_hara, ik, ikb, ikc, ikl, ikk, efpangan, efair, efttair, penduduk21, nor_pend21, penduduk30, penduduk40, penduduk50, bod21, cod21, tss21, bod30, cod30, tss30, bod40, cod40, tss40, bod50, cod50, tss50, norbod21, norcod21, nortss21, ddlhpang_1, ddlhair, sampah21, sampah30, sampah40, sampah50, norsamp21, nortinja21, tinja21, tinja30, tinja40, tinja50, 
+      rataijepan, rataijeair, rataijeser, rataijesdg, rataijeuda, rataijeikl, rataijemit, rataijetat, rataijemur, rataijes_1, rataijeham, rataijekeh, rataijetan, rataijepri, rataijehar, rataik, rataikb, rataikc, rataikl, rataikk, ratapend21, ratanpen21, ratanbod21,  ratancod21, ratantss21, rataddlhpa, rataddlhai, ratansam21, ratantin21
       FROM d3tlh_table
-      WHERE id = $1
+      WHERE id_1 = $1
     `;
 
     const result = await pool.query(query, [id]);
@@ -101,7 +101,8 @@ app.get("/api/data_wilayah/:id", async (req, res) => {
         efpangan: row.efpangan,
         efair: row.efair,
         efttair: row.efttair,
-        normalisas: row.normalisas,
+        penduduk21: row.penduduk21,
+        nor_pend21: row.nor_pend21,
         penduduk30: row.penduduk30,
         penduduk40: row.penduduk40,
         penduduk50: row.penduduk50,
@@ -117,16 +118,21 @@ app.get("/api/data_wilayah/:id", async (req, res) => {
         bod50: row.bod50,
         cod50: row.cod50,
         tss50: row.tss50,
+        norbod21: row.norbod21,
+        norcod21: row.norcod21,
+        nortss21: row.nortss21,
         ddlhpang_1: row.ddlhpang_1,
         ddlhair: row.ddlhair,
-        sampah_21: row.sampah_21,
-        sampah_30: row.sampah_30,
-        sampah_40: row.sampah_40,
-        sampah_50: row.sampah_50,
-        tinja_21: row.tinja_21,
-        tinja_30: row.tinja_30,
-        tinja_40: row.tinja_40,
-        tinja_50: row.tinja_50,
+        sampah21: row.sampah21,
+        sampah30: row.sampah30,
+        sampah40: row.sampah40,
+        sampah50: row.sampah50,
+        norsamp21: row.norsamp21,
+        tinja21: row.tinja21,
+        tinja30: row.tinja30,
+        tinja40: row.tinja40,
+        tinja50: row.tinja50,
+        nortinja21: row.nortinja21,
       },
       rata_rata: {
         rataijepan: row.rataijepan,
@@ -149,14 +155,15 @@ app.get("/api/data_wilayah/:id", async (req, res) => {
         rataikc: row.rataikc,
         rataikl: row.rataikl,
         rataikk: row.rataikk,
-        ratapendud: row.ratapendud,
-        ratabod21: row.ratabod21,
-        ratacod21: row.ratacod21,
-        ratatss21: row.ratatss21,
+        ratapend21: row.ratapend21,
+        ratanpen21: row.ratanpen21,
+        ratanbod21: row.ratanbod21,
+        ratancod21: row.ratancod21,
+        ratantss21: row.ratantss21,
+        ratansam21: row.ratansam21,
+        ratantin21: row.ratantin21,
         rataddlhpa: row.rataddlhpa,
         rataddlhai: row.rataddlhai,
-        rata_sampa: row.rata_sampa,
-        rata_tinja: row.rata_tinja,
       },
     });
   } catch (error) {
