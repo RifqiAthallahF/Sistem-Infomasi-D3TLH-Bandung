@@ -29,6 +29,18 @@ body {
   min-width: 0;
 }
 
+.chart-wrapper {
+  width: 100%;
+  max-width: 90%;
+  height: auto;
+  aspect-ratio: 1 / 1;
+  background: #f9f9f9;
+  padding: 24px;
+  border-radius: 16px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  box-sizing: border-box;
+}
+
 .sidebar-container {
   transition: width 0.3s;
   background: #ffffff;
@@ -72,7 +84,7 @@ body {
   display: flex;
   justify-content: center;
   width: 100%;
-  margin-top: auto;
+  margin-top: -10px;
 }
 
 .radar-button,
@@ -84,7 +96,7 @@ body {
   border-radius: 0.75rem;
   font-weight: 600;
   font-size: 0.9rem;
-  margin-top: -17px;
+  margin-bottom: -35px;
   cursor: pointer;
   box-shadow: 0 4px 8px rgba(46, 125, 50, 0.3);
   transition: background-color 0.3s, box-shadow 0.3s, transform 0.2s;
@@ -110,10 +122,13 @@ body {
 }
 
 .radar-chart-wrapper {
+  width: 100%;
+  max-width: 460px;
+  height: 460px;
   position: relative;
-  width: 105%;
-  max-width: 720px;
-  margin-top: -22px;
+  overflow: visible;
+  margin: 0 auto;
+  bottom: 25px;
 }
 
 .radar-modal-overlay {
@@ -215,11 +230,18 @@ body {
 }
 
 .bar-chart-container {
-  padding: 0px;
-  margin-top: 10px;
+  width: 100%;
+  height: auto;
+  max-width: 100%;
+  aspect-ratio: 1 / 1;
+  padding: 12px;
+  box-sizing: border-box;
   font-family: "Poppins", sans-serif;
   color: #000;
   font-weight: bold;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
 
 .bar-chart-legend {
@@ -296,7 +318,7 @@ body {
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
   transition: transform 0.2s ease, box-shadow 0.3s ease;
   position: absolute;
-  bottom: 15px;
+  bottom: 10px;
   left: 15px;
   z-index: 1000;
 
@@ -336,7 +358,7 @@ body {
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
   transition: transform 0.2s ease, box-shadow 0.3s ease;
   position: absolute;
-  bottom: 15px;
+  bottom: 10px;
   right: 15px;
   z-index: 1000;
 
@@ -637,17 +659,40 @@ body {
   .radar-container {
     height: auto !important;
     padding: 12px;
+    width: 100%;
+  }
+
+  .chart-wrapper {
+    width: 100%;
+    max-width: 100%;
+    height: auto;
+    aspect-ratio: 1 / 1;
+    background: #f9f9f9;
+    padding: 24px;
+    border-radius: 16px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    box-sizing: border-box;
   }
 
   .radar-chart-wrapper {
-    height: 400px !important;
-    width: 400px;
+    width: 100%;
+    max-width: 440px;
+    height: 440px;
+    position: relative;
+    overflow: visible;
+    margin: 0 auto;
+    bottom: 40px;
   }
 
   .radar-button {
     font-size: 14px;
     padding: 9px 18px;
     margin-top: -7px;
+  }
+
+  .radar-button-wrapper {
+    margin-top: 16px;
+    text-align: center;
   }
 
   .bar-chart-container {
@@ -678,7 +723,7 @@ body {
   .sidebar-container.open {
     width: 45% !important;
     min-width: unset !important;
-    padding: 20px !important;
+    padding: 10px !important;
   }
 
   .radar-container {
@@ -686,14 +731,38 @@ body {
     padding: 10px;
   }
 
+  .chart-wrapper {
+    width: 100%;
+    max-width: 100%;
+    height: auto;
+    aspect-ratio: 1 / 1;
+    background: #f9f9f9;
+    padding: 24px;
+    border-radius: 16px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    box-sizing: border-box;
+  }
+
+  .radar-button-wrapper {
+    display: flex;
+    justify-content: center;
+    width: 100%;
+    margin-top: -18px;
+  }
+
   .radar-chart-wrapper {
-    height: 380px !important;
-    width: 360px;
+    width: 100%;
+    max-width: 410px;
+    height: 410px;
+    position: relative;
+    overflow: visible;
+    margin: 0 auto;
+    bottom: 40px;
   }
 
   .radar-button {
-    font-size: 13px;
-    padding: 8px 16px;
+    font-size: 12px;
+    padding: 7px 12px;
   }
 
   .download-button {
@@ -705,7 +774,7 @@ body {
   .help-button {
     width: 30%;
     font-size: 13px;
-    padding: 8px 13px;
+    padding: 8px 25px;
   }
 
   .leaflet-control-geosearch {
@@ -717,25 +786,47 @@ body {
 
 @media (max-width: 834px) {
   .sidebar-container.open {
-    width: 46% !important;
+    width: 47% !important;
     min-width: unset !important;
-    padding: 20px !important;
+    padding: 10px !important;
   }
 
   .radar-container {
     height: auto !important;
-    padding: 10px;
+    padding: 0px;
+  }
+
+  .chart-wrapper {
+    width: 100%;
+    max-width: 110%;
+    height: auto;
+    aspect-ratio: 1 / 1;
+    background: #f9f9f9;
+    padding: 24px;
+    border-radius: 16px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    box-sizing: border-box;
   }
 
   .radar-chart-wrapper {
-    height: 360px !important;
-    width: 340px;
+    width: 100%;
+    max-width: 370px;
+    height: 370px;
+    position: relative;
+    overflow: visible;
+    margin: 0 auto;
+    bottom: 30px;
+  }
+
+  .radar-button-wrapper {
+    margin-top: 10px;
+    text-align: center;
   }
 
   .radar-button {
     font-size: 13px;
     padding: 8px 15px;
-    margin-top: 15px;
+    margin-top: 0px;
   }
 
   .download-button {
@@ -759,30 +850,47 @@ body {
 
 @media (max-width: 768px) {
   .sidebar-container.open {
-    width: 48% !important;
+    width: 51% !important;
     min-width: unset !important;
-    padding: 16px !important;
+    padding: 10px !important;
   }
 
   .radar-container {
     height: auto !important;
-    padding: 10px;
-  }
-
-  .radar-chart-wrapper {
-    height: 360px !important;
-    width: 375px;
+    padding: 0px;
   }
 
   .radar-button-wrapper {
-    margin-top: 16px;
+    margin-top: 6px;
     text-align: center;
+  }
+
+  .chart-wrapper {
+    width: 100%;
+    max-width: 110%;
+    height: auto;
+    aspect-ratio: 1 / 1;
+    background: #f9f9f9;
+    padding: 24px;
+    border-radius: 16px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    box-sizing: border-box;
+  }
+
+  .radar-chart-wrapper {
+    width: 100%;
+    max-width: 380px;
+    height: 380px;
+    position: relative;
+    overflow: visible;
+    margin: 0 auto;
+    bottom: 30px;
   }
 
   .radar-button {
     font-size: 13px;
-    padding: 8px 16px;
-    border-radius: 8px;
+    padding: 8px 15px;
+    margin-top: 0px;
   }
 
   .radar-modal {
@@ -972,9 +1080,9 @@ body {
 
 @media (max-width: 695px) {
   .sidebar-container.open {
-    width: 50% !important;
+    width: 55% !important;
     min-width: unset !important;
-    padding: 10px !important;
+    padding: 5px !important;
   }
   .leaflet-control-zoom {
     top: 5px !important;
@@ -989,23 +1097,39 @@ body {
   }
   .radar-container {
     height: auto !important;
-    padding: 10px;
+    padding: 0px;
   }
 
+  .chart-wrapper {
+    width: 100%;
+    max-width: 110%;
+    height: auto;
+    aspect-ratio: 1 / 1;
+    background: #f9f9f9;
+    padding: 24px;
+    border-radius: 16px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    box-sizing: border-box;
+  }
   .radar-chart-wrapper {
-    height: 340px !important;
-    width: 345px;
-  }
-
-  .radar-button-wrapper {
-    margin-top: 14px;
-    text-align: center;
+    width: 100%;
+    max-width: 380px;
+    height: 380px;
+    position: relative;
+    overflow: visible;
+    margin: 0 auto;
+    bottom: 30px;
   }
 
   .radar-button {
     font-size: 12px;
-    padding: 8px 14px;
-    border-radius: 6px;
+    padding: 8px 15px;
+    margin-top: 0px;
+  }
+
+  .radar-button-wrapper {
+    margin-top: 10px;
+    text-align: center;
   }
 
   .radar-modal {
@@ -1085,13 +1209,13 @@ body {
 
 @media (max-width: 620px) {
   .sidebar-container.open {
-    width: 55% !important;
-    padding: 8px !important;
+    width: 59% !important;
+    padding: 5px !important;
   }
 
   .leaflet-control-zoom {
     top: 0px !important;
-    left: -3spx !important;
+    left: -3px !important;
   }
 
   .leaflet-control-zoom-in,
@@ -1100,14 +1224,32 @@ body {
     height: 28px !important;
     font-size: 16px !important;
   }
+
+  .chart-wrapper {
+    width: 100%;
+    max-width: 120%;
+    height: auto;
+    aspect-ratio: 1 / 1;
+    background: #f9f9f9;
+    padding: 24px;
+    border-radius: 16px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    box-sizing: border-box;
+  }
+
   .radar-chart-wrapper {
-    height: 360px !important;
-    width: 355px;
+    width: 100%;
+    max-width: 350px;
+    height: 350px;
+    position: relative;
+    overflow: visible;
+    margin: 0 auto;
+    bottom: 30px;
   }
 
   .radar-button {
-    font-size: 11px;
-    padding: 7px 12px;
+    font-size: 12px;
+    padding: 8px 15px;
     margin-top: 0px;
   }
 
@@ -1149,7 +1291,7 @@ body {
   .checkbox-container label {
     display: flex;
     align-items: center;
-    gap: 6px;
+    gap: 3px;
     white-space: nowrap;
   }
 
@@ -1163,18 +1305,23 @@ body {
 @media (max-width: 550px) {
   .sidebar-container.open {
     width: 55% !important;
-    padding: 10px !important;
+    padding: 5px !important;
   }
 
   .radar-chart-wrapper {
-    height: 300px !important;
-    width: 325px;
+    width: 100%;
+    max-width: 350px;
+    height: 350px;
+    position: relative;
+    overflow: visible;
+    margin: 0 auto;
+    bottom: 30px;
   }
 
   .radar-button {
-    font-size: 10px;
-    padding: 6px 10px;
-    margin-top: 30px;
+    font-size: 12px;
+    padding: 8px 15px;
+    margin-top: 0px;
   }
 
   .radar-modal {
@@ -1239,9 +1386,9 @@ body {
 
 @media (max-width: 500px) {
   .sidebar-container.open {
-    width: 53% !important;
+    width: 55% !important;
     min-width: unset !important;
-    padding: 3px !important;
+    padding: 5px !important;
   }
 
   .sidebar-title {
@@ -1266,23 +1413,40 @@ body {
   }
   .radar-container {
     height: auto !important;
-    padding: 50px;
+    padding: 0px;
+  }
+
+  .chart-wrapper {
+    width: 100%;
+    max-width: 150%;
+    height: auto;
+    aspect-ratio: 1 / 1;
+    background: #f9f9f9;
+    padding: 24px;
+    border-radius: 16px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    box-sizing: border-box;
   }
 
   .radar-chart-wrapper {
-    height: 235px !important;
-    width: 300px;
-  }
-
-  .radar-button-wrapper {
-    margin-top: 12px;
-    text-align: center;
+    width: 100%;
+    max-width: 300px;
+    height: 300px;
+    position: relative;
+    overflow: visible;
+    margin: 0 auto;
+    bottom: 30px;
   }
 
   .radar-button {
-    font-size: 11px;
-    padding: 7px 14px;
-    border-radius: 6px;
+    font-size: 12px;
+    padding: 8px 15px;
+    margin-top: 0px;
+  }
+
+  .radar-button-wrapper {
+    margin-top: 10px;
+    text-align: center;
   }
 
   .radar-modal {
@@ -1384,7 +1548,7 @@ body {
   .sidebar-container.open {
     width: 55% !important;
     min-width: unset !important;
-    padding: 3px !important;
+    padding: 5px !important;
   }
   .sidebar-title {
     font-size: 16px !important;
@@ -1408,23 +1572,39 @@ body {
   }
   .radar-container {
     height: auto !important;
-    padding: 50px;
+    padding: 0px;
   }
 
   .radar-chart-wrapper {
-    height: 235px !important;
-    width: 300px;
+    width: 100%;
+    max-width: 240px;
+    height: 240px;
+    position: relative;
+    overflow: visible;
+    margin: 0 auto;
+    bottom: 30px;
   }
 
-  .radar-button-wrapper {
-    margin-top: 12px;
-    text-align: center;
+  .chart-wrapper {
+    width: 100%;
+    max-width: 160%;
+    height: auto;
+    aspect-ratio: 1 / 1;
+    background: #f9f9f9;
+    padding: 24px;
+    border-radius: 16px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    box-sizing: border-box;
   }
 
   .radar-button {
-    font-size: 10px;
-    padding: 7px 14px;
-    border-radius: 6px;
+    font-size: 11px;
+    padding: 8px 15px;
+    margin-top: 0px;
+  }
+  .radar-button-wrapper {
+    margin-top: 10px;
+    text-align: center;
   }
 
   .radar-modal {
@@ -1526,7 +1706,7 @@ body {
   .sidebar-container.open {
     width: 55% !important;
     min-width: unset !important;
-    padding: 3px !important;
+    padding: 5px !important;
   }
 
   .leaflet-control-zoom {
@@ -1543,23 +1723,39 @@ body {
 
   .radar-container {
     height: auto !important;
-    padding: 6px;
+    padding: 0px;
+  }
+
+  .chart-wrapper {
+    width: 100%;
+    max-width: 180%;
+    height: auto;
+    aspect-ratio: 1 / 1;
+    background: #f9f9f9;
+    padding: 24px;
+    border-radius: 16px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    box-sizing: border-box;
   }
 
   .radar-chart-wrapper {
-    height: 330px !important;
-    width: 253px;
-  }
-
-  .radar-button-wrapper {
-    margin-top: 10px;
-    text-align: center;
+    width: 100%;
+    max-width: 210px;
+    height: 210px;
+    position: relative;
+    overflow: visible;
+    margin: 0 auto;
+    bottom: 30px;
   }
 
   .radar-button {
     font-size: 9px;
-    padding: 6px 12px;
-    border-radius: 6px;
+    padding: 8px 15px;
+    margin-top: 0px;
+  }
+  .radar-button-wrapper {
+    margin-top: 10px;
+    text-align: center;
   }
 
   .radar-modal {
@@ -1661,7 +1857,7 @@ body {
   .sidebar-container.open {
     width: 60% !important;
     min-width: unset !important;
-    padding: 2px !important;
+    padding: 5px !important;
   }
 
   .sidebar-title {
@@ -1688,23 +1884,40 @@ body {
 
   .radar-container {
     height: auto !important;
-    padding: 20px;
+    padding: 0px;
+  }
+
+  .chart-wrapper {
+    width: 100%;
+    max-width: 190%;
+    height: auto;
+    aspect-ratio: 1 / 1;
+    background: #f9f9f9;
+    padding: 24px;
+    border-radius: 16px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    box-sizing: border-box;
   }
 
   .radar-chart-wrapper {
-    height: 320px !important;
-    width: 240px;
+    width: 100%;
+    max-width: 200px;
+    height: 200px;
+    position: relative;
+    overflow: visible;
+    margin: 0 auto;
+    bottom: 30px;
+  }
+
+  .radar-button {
+    font-size: 9px;
+    padding: 8px 15px;
+    margin-top: 0px;
   }
 
   .radar-button-wrapper {
     margin-top: 8px;
     text-align: center;
-  }
-
-  .radar-button {
-    font-size: 9px;
-    padding: 5px 9px;
-    border-radius: 6px;
   }
 
   .radar-modal {
@@ -1805,7 +2018,7 @@ body {
   .sidebar-container.open {
     width: 60% !important;
     min-width: unset !important;
-    padding: 2px !important;
+    padding: 5px !important;
   }
 
   .sidebar-title {
@@ -1832,23 +2045,40 @@ body {
 
   .radar-container {
     height: auto !important;
-    padding: 16px;
+    padding: 0px;
+  }
+
+  .chart-wrapper {
+    width: 100%;
+    max-width: 220%;
+    height: auto;
+    aspect-ratio: 1 / 1;
+    background: #f9f9f9;
+    padding: 24px;
+    border-radius: 16px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    box-sizing: border-box;
   }
 
   .radar-chart-wrapper {
-    height: 300px !important;
-    width: 200px;
+    width: 100%;
+    max-width: 160px;
+    height: 180px;
+    position: relative;
+    overflow: visible;
+    margin: 0 auto;
+    bottom: 30px;
+  }
+
+  .radar-button {
+    font-size: 8px;
+    padding: 8px 10px;
+    margin-top: 0px;
   }
 
   .radar-button-wrapper {
     margin-top: 6px;
     text-align: center;
-  }
-
-  .radar-button {
-    font-size: 8.5px;
-    padding: 4px 8px;
-    border-radius: 5px;
   }
 
   .radar-modal {

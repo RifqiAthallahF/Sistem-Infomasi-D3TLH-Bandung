@@ -23,7 +23,7 @@ const parameterGroups = {
     { label: "Pangan", field: "ddlhpang_1", thresholdField: "rataddlhpa" },
     { label: "Air", field: "ddlhair", thresholdField: "rataddlhai" },
     {
-      label: "Populasi Penduduk",
+      label: "Penduduk",
       field: "penduduk21",
       thresholdField: "ratapend21",
     },
@@ -67,7 +67,7 @@ const parameterGroups = {
     { label: "Longsor", field: "ikl", thresholdField: "rataikl" },
     { label: "Kebakaran Lahan", field: "ikk", thresholdField: "rataikk" },
     {
-      label: "Populasi Penduduk",
+      label: "Penduduk",
       field: "nor_pend21",
       thresholdField: "ratanpen21",
     },
@@ -100,7 +100,7 @@ const parameterGroups = {
       thresholdField: "ratantin21",
     },
     {
-      label: "Populasi Penduduk",
+      label: "Penduduk",
       field: "nor_pend21",
       thresholdField: "ratanpen21",
     },
@@ -383,7 +383,7 @@ const MapWithChart = () => {
     });
   };
 
-  const handleDownloadMetadata = (selectedGroup) => {
+  const handleMetadata = (selectedGroup) => {
     const filename = metadataFileMap[selectedGroup];
 
     if (!filename) {
@@ -671,17 +671,7 @@ const MapWithChart = () => {
             ))}
           </select>
           {selectedFeatureId ? (
-            <div
-              style={{
-                width: "100%",
-                maxWidth: "500px",
-                height: "500px",
-                background: "#f9f9f9",
-                padding: "24px",
-                borderRadius: "16px",
-                boxShadow: "0 4px 12px rgba(0, 0, 0, 0.1)",
-              }}
-            >
+            <div className="chart-wrapper">
               {[
                 "Efisiensi Sumber Daya Alam",
                 "Daya Dukung Pangan dan Air",

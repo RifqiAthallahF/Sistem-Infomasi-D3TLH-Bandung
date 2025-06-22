@@ -42,12 +42,14 @@ const RadarChartComponent = ({ parameters, dataSource, selectedGroup }) => {
         setFontSize(7);
       } else if (width <= 550) {
         setFontSize(9);
+      } else if (width <= 768) {
+        setFontSize(11);
       } else {
         setFontSize(12);
       }
     };
 
-    updateFontSize(); // panggil pertama kali
+    updateFontSize();
     window.addEventListener("resize", updateFontSize);
     return () => window.removeEventListener("resize", updateFontSize);
   }, []);
@@ -104,14 +106,8 @@ const RadarChartComponent = ({ parameters, dataSource, selectedGroup }) => {
   });
 
   return (
-    <div
-      className="radar-container"
-      style={{ height: isCompact ? "320px" : "100%" }}
-    >
-      <div
-        className="radar-chart-wrapper"
-        style={{ height: isCompact ? "400px" : "800px" }}
-      >
+    <div className="radar-container">
+      <div className="radar-chart-wrapper">
         <Radar
           data={{ labels, datasets }}
           options={{
@@ -157,14 +153,14 @@ const RadarChartComponent = ({ parameters, dataSource, selectedGroup }) => {
             plugins: {
               legend: {
                 display: !isCompact,
-                position: "bottom",
+                position: "top",
                 labels: {
                   font: {
                     size: fontSize,
                     family: "Poppins",
                   },
                   color: "#444",
-                  padding: 10,
+                  padding: 12,
                 },
               },
 
@@ -215,27 +211,26 @@ const RadarChartComponent = ({ parameters, dataSource, selectedGroup }) => {
             },
           }}
         />
-      </div>
-
-      <div className="radar-button-wrapper">
-        <button
-          className={`radar-button ${btnHover ? "hover" : ""}`}
-          onMouseEnter={() => setBtnHover(true)}
-          onMouseLeave={() => setBtnHover(false)}
-          onClick={() => setModalOpen(true)}
-        >
-          <img
-            src="/icons/alert.svg"
-            alt="Status Parameter"
-            style={{
-              width: "18px",
-              height: "18px",
-              verticalAlign: "middle",
-              marginRight: "7px",
-            }}
-          />
-          Lihat Rangkuman Status
-        </button>
+        <div className="radar-button-wrapper">
+          <button
+            className={`radar-button ${btnHover ? "hover" : ""}`}
+            onMouseEnter={() => setBtnHover(true)}
+            onMouseLeave={() => setBtnHover(false)}
+            onClick={() => setModalOpen(true)}
+          >
+            <img
+              src="/icons/alert.svg"
+              alt="Status Parameter"
+              style={{
+                width: "18px",
+                height: "18px",
+                verticalAlign: "middle",
+                marginRight: "7px",
+              }}
+            />
+            Lihat Rangkuman Status
+          </button>
+        </div>
       </div>
 
       {modalOpen && (
@@ -268,7 +263,6 @@ const RadarChartComponent = ({ parameters, dataSource, selectedGroup }) => {
               ))}
             </ul>
 
-            {/* Keterangan rata-rata */}
             <p className="modal-note">
               <strong>Keterangan:</strong> Rata-rata adalah nilai rata-rata
               indikator lingkungan di Kota Bandung.
