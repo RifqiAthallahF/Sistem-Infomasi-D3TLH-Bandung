@@ -23,9 +23,9 @@ const parameterGroups = {
     { label: "Pangan", field: "ddlhpang_1", thresholdField: "rataddlhpa" },
     { label: "Air", field: "ddlhair", thresholdField: "rataddlhai" },
     {
-      label: "Penduduk",
-      field: "normalisas",
-      thresholdField: "ratapendud",
+      label: "Populasi Penduduk",
+      field: "penduduk21",
+      thresholdField: "ratapend21",
     },
   ],
   "Efisiensi Sumber Daya Alam": [
@@ -68,69 +68,75 @@ const parameterGroups = {
     { label: "Kebakaran Lahan", field: "ikk", thresholdField: "rataikk" },
     {
       label: "Populasi Penduduk",
-      field: "normalisas",
-      thresholdField: "ratapendud",
+      field: "nor_pend21",
+      thresholdField: "ratanpen21",
     },
   ],
 
   "Potensi Beban Pencemar (PBP) dan Timbulan": [
     {
       label: "Biochemical Oxygen",
-      field: "bod21",
-      thresholdField: "ratabod21",
+      field: "norbod21",
+      thresholdField: "ratanbod21",
     },
     {
       label: "Chemical Oxygen",
-      field: "cod21",
-      thresholdField: "ratacod21",
+      field: "norcod21",
+      thresholdField: "ratancod21",
     },
     {
       label: "Suspended Solid",
-      field: "tss21",
-      thresholdField: "ratatss21",
+      field: "nortss21",
+      thresholdField: "ratantss21",
     },
     {
       label: "Timbulan Sampah",
-      field: "sampah_21",
-      thresholdField: "rata_sampa",
+      field: "norsamp21",
+      thresholdField: "ratansam21",
     },
     {
       label: "Timbulan Tinja",
-      field: "tinja_21",
-      thresholdField: "rata_tinja",
+      field: "nortinja21",
+      thresholdField: "ratantin21",
     },
     {
       label: "Populasi Penduduk",
-      field: "normalisas",
-      thresholdField: "ratapendud",
+      field: "nor_pend21",
+      thresholdField: "ratanpen21",
     },
   ],
   "Proyeksi PBP Biochemical Oxygen Demand": [
+    { label: "Biochemical Oxygen 2021", field: "bod21" },
     { label: "Biochemical Oxygen 2030", field: "bod30" },
     { label: "Biochemical Oxygen 2040", field: "bod40" },
     { label: "Biochemical Oxygen 2050", field: "bod50" },
   ],
   "Proyeksi PBP Chemical Oxygen Demand": [
+    { label: "Chemical Oxygen 2021", field: "cod21" },
     { label: "Chemical Oxygen 2030", field: "cod30" },
     { label: "Chemical Oxygen 2040", field: "cod40" },
     { label: "Chemical Oxygen 2050", field: "cod50" },
   ],
   "Proyeksi Timbulan Sampah": [
-    { label: "Timbulan Sampah 2030", field: "sampah_30" },
-    { label: "Timbulan Sampah 2040", field: "sampah_40" },
-    { label: "Timbulan Sampah 2050", field: "sampah_50" },
+    { label: "Timbulan Sampah 2021", field: "sampah21" },
+    { label: "Timbulan Sampah 2030", field: "sampah30" },
+    { label: "Timbulan Sampah 2040", field: "sampah40" },
+    { label: "Timbulan Sampah 2050", field: "sampah50" },
   ],
   "Proyeksi Timbulan Tinja": [
-    { label: "Timbulan Tinja 2030", field: "tinja_30" },
-    { label: "Timbulan Tinja 2040", field: "tinja_40" },
-    { label: "Timbulan Tinja 2050", field: "tinja_50" },
+    { label: "Timbulan Tinja 2021", field: "tinja21" },
+    { label: "Timbulan Tinja 2030", field: "tinja30" },
+    { label: "Timbulan Tinja 2040", field: "tinja40" },
+    { label: "Timbulan Tinja 2050", field: "tinja50" },
   ],
   "Proyeksi PBP Total Suspended Solid": [
+    { label: "Suspended Solid 2021", field: "tss21" },
     { label: "Suspended Solid 2030", field: "tss30" },
     { label: "Suspended Solid 2040", field: "tss40" },
     { label: "Suspended Solid 2050", field: "tss50" },
   ],
   "Proyeksi Penduduk": [
+    { label: "Penduduk 2021", field: "penduduk21" },
     { label: "Penduduk 2030", field: "penduduk30" },
     { label: "Penduduk 2040", field: "penduduk40" },
     { label: "Penduduk 2050", field: "penduduk50" },
@@ -138,20 +144,26 @@ const parameterGroups = {
 };
 
 const metadataFileMap = {
-  "Indeks Kerentanan Bencana": "IndeksKerentananBencana.xml",
-  "Indeks Pemanfaatan Sumber Daya Alam": "IndeksPemanfaatanSumberDaya.xml",
-  "Potensi Beban Pencemar": "Potensibebanpencemar.xml",
-  "Indeks Jasa Ekosistem": "IndeksJasaEkosistem.xml",
-  "Proyeksi Timbulan Sampah": "ProyeksiTimbunanSampah.xml",
-  "Proyeksi Timbulan Tinja": "ProyeksiTimbunanTinja.xml",
-  "Proyeksi Potensi Beban Pencemar Biochemical Oxygen Demand":
-    "ProyeksiBOD.xml",
-  "Proyeksi Potensi Beban Pencemar Chemical Oxygen Demand": "ProyeksiCOD.xml",
-  "Proyeksi Potensi Beban Pencemar Total Suspended Solid": "ProyeksiTSS.xml",
-  "Proyeksi Penduduk": "ProyeksiPenduduk.xml",
-  "Jaringan Air Minum": "JaringanAirMinum.xml",
-  "Jaringan Drainase": "JaringanDrainase.xml",
-  "Jaringan Limbah": "JaringanLimbah.xml",
+  "Daya Dukung Pangan dan Air": "DDLHPangandanAirKotaBandung.xml",
+  "Efisiensi Sumber Daya Alam": "EfisiensiSumberDayaKotaBandung.xml",
+  "Indeks Jasa Ekosistem": "IndeksJasaEkosistemKotaBandung.xml",
+  "Indeks Kerentanan Bencana": "IndeksKerentananBencanaKotaBandung.xml",
+  "Potensi Beban Pencemar (PBP) dan Timbulan":
+    "PotensiBebanPencemarTimbulanKotaBandung.xml",
+  "Proyeksi Timbulan Tinja":
+    "ProyeksiBebanPencemarTimbulanTinjaKotaBandung.xml",
+  "Proyeksi Timbulan Sampah":
+    "ProyeksiBebanPencemarTimbulanSampahKotaBandung.xml",
+  "Proyeksi PBP Biochemical Oxygen Demand":
+    "ProyeksiBebanPencemarBiologicalOxygenDemandKotaBandung.xml",
+  "Proyeksi PBP Chemical Oxygen Demand":
+    "ProyeksiBebanPencemarTimbulanChemicalOxygenDemandKotaBandung.xml",
+  "Proyeksi PBP Total Suspended Solid":
+    "ProyeksiBebanPencemarTotalSuspendedKotaBandung.xml",
+  "Proyeksi Penduduk": "ProyeksiPendudukKotaBandung.xml",
+  "Jaringan Air Minum": "JaringanAirMinumKotaBandung.xml",
+  "Jaringan Drainase": "JaringanDrainaseKotaBandung.xml",
+  "Jaringan Limbah": "JaringanLimbahKotaBandung.xml",
 };
 
 const SearchControl = () => {
@@ -230,6 +242,8 @@ const MapWithChart = () => {
     Object.keys(parameterGroups)[0]
   );
   const [sidebarOpen, setSidebarOpen] = useState(true);
+  const sidebarRef = useRef(null);
+
   const [showHelp, setShowHelp] = useState(false);
   const [activeTab, setActiveTab] = useState("panduan");
 
@@ -270,7 +284,7 @@ const MapWithChart = () => {
       setLoading(true);
       try {
         const res = await axios.get(
-          "http://localhost:8080/geoserver/si_d3tlh/ows?service=WFS&version=1.0.0&request=GetFeature&typeName=si_d3tlh:data_layer&outputFormat=application/json"
+          "http://localhost:8080/geoserver/d3tlh_ws/ows?service=WFS&version=1.0.0&request=GetFeature&typeName=d3tlh_ws:d3tlh_layer&outputFormat=application/json"
         );
         if (res.data?.type === "FeatureCollection") {
           setGeoJsonData(res.data);
@@ -278,13 +292,14 @@ const MapWithChart = () => {
       } catch (err) {
         console.error("Error fetching GeoServer data:", err);
       } finally {
-        setLoading(false);
+        setTimeout(() => {
+          setLoading(false);
+        }, 3000);
       }
     };
     fetchGeoJson();
   }, []);
 
-  // Fetch attribute data by feature id
   const fetchAtributById = async (id) => {
     try {
       const res = await axios.get(
@@ -296,7 +311,6 @@ const MapWithChart = () => {
     }
   };
 
-  // Event handler untuk tiap feature GeoJSON
   const onEachFeature = (feature, layer) => {
     const id = feature?.properties?.id_1;
     if (!id) return;
@@ -346,7 +360,6 @@ const MapWithChart = () => {
   };
 
   const onEachJaringanFeature = (feature, layer) => {
-    // Tampilkan tooltip dengan label "Jenis:"
     if (feature.properties && feature.properties.NAMOBJ) {
       const tooltipContent = `
         <span style="font-family: 'Poppins', sans-serif;">
@@ -399,7 +412,6 @@ const MapWithChart = () => {
     >
       <div style={{ display: "flex", flex: 1, overflow: "hidden" }}>
         <div style={{ position: "relative", flex: 1, height: "100%" }}>
-          {/* Loading overlay */}
           {loading && (
             <div
               style={{
@@ -421,7 +433,7 @@ const MapWithChart = () => {
                   border: "6px solid #28a745",
                   borderTopColor: "transparent",
                   borderRadius: "50%",
-                  animation: "spin 2s linear infinite", // durasi spin 2 detik
+                  animation: "spin 2s linear infinite",
                   marginBottom: 12,
                 }}
               />
@@ -438,10 +450,9 @@ const MapWithChart = () => {
             </div>
           )}
 
-          {/* MapContainer (tidak diubah) */}
           <MapContainer
-            center={[-6.9175, 107.6191]}
-            zoom={12}
+            center={[-6.9075, 107.6391]}
+            zoom={13}
             style={{ flex: 1, height: "100%" }}
           >
             <TileLayer
@@ -450,8 +461,8 @@ const MapWithChart = () => {
             />
             <SearchControl />
 
-            {/* Checkbox untuk toggle layer */}
             <div
+              className="checkbox-container"
               style={{
                 position: "absolute",
                 top: 10,
@@ -463,15 +474,6 @@ const MapWithChart = () => {
                 boxShadow: "0 2px 6px rgba(0,0,0,0.3)",
               }}
             >
-              <label>
-                <input
-                  type="checkbox"
-                  checked={showWilayah}
-                  onChange={() => setShowWilayah(!showWilayah)}
-                />{" "}
-                Indikator Lingkungan
-              </label>
-              <br />
               <label>
                 <input
                   type="checkbox"
@@ -500,7 +502,6 @@ const MapWithChart = () => {
               </label>
             </div>
 
-            {/* Layer-layer GeoJSON */}
             {showAirMinum && airMinumData && (
               <GeoJSON
                 data={airMinumData}
@@ -555,7 +556,7 @@ const MapWithChart = () => {
               />
             )}
 
-            {showWilayah && geoJsonData && (
+            {geoJsonData && (
               <GeoJSON
                 data={geoJsonData}
                 onEachFeature={onEachFeature}
@@ -564,89 +565,79 @@ const MapWithChart = () => {
                     selectedFeatureId === feature.properties.id_1;
                   return {
                     color: isSelected ? "#ff6e00" : "#28a745",
-                    weight: 0.2,
+                    weight: 0.1,
                     fillColor: isSelected ? "#ff6e00" : "transparent",
-                    fillOpacity: isSelected ? 0.5 : 0.2,
+                    fillOpacity: isSelected ? 0.5 : 0.1,
                   };
                 }}
               />
             )}
 
-            {/* LayersControl untuk mengontrol peta jaringan */}
-            <LayersControl>
-              <LayersControl.Overlay
-                checked={showAirMinum}
-                name="Jaringan Air Minum"
-              >
-                {airMinumData && (
-                  <GeoJSON
-                    data={airMinumData}
-                    style={{ color: "#383bff", weight: 1 }}
-                    onEachFeature={onEachJaringanFeature}
-                  />
-                )}
-              </LayersControl.Overlay>
+            <div className="custom-layers-control">
+              <LayersControl position="topright">
+                <LayersControl.Overlay
+                  checked={showAirMinum}
+                  name="Jaringan Air Minum"
+                >
+                  {airMinumData && (
+                    <GeoJSON
+                      data={airMinumData}
+                      style={{ color: "#383bff", weight: 1 }}
+                      onEachFeature={onEachJaringanFeature}
+                    />
+                  )}
+                </LayersControl.Overlay>
 
-              <LayersControl.Overlay
-                checked={showLimbah}
-                name="Jaringan Limbah"
-              >
-                {limbahData && (
-                  <GeoJSON
-                    data={limbahData}
-                    style={{ color: "#ff383a", weight: 1 }}
-                    onEachFeature={onEachJaringanFeature}
-                  />
-                )}
-              </LayersControl.Overlay>
+                <LayersControl.Overlay
+                  checked={showDrainase}
+                  name="Jaringan Drainase"
+                >
+                  {drainaseData && (
+                    <GeoJSON
+                      data={drainaseData}
+                      style={{ color: "#389fff", weight: 1 }}
+                      onEachFeature={onEachJaringanFeature}
+                    />
+                  )}
+                </LayersControl.Overlay>
 
-              <LayersControl.Overlay
-                checked={showDrainase}
-                name="Jaringan Drainase"
-              >
-                {drainaseData && (
-                  <GeoJSON
-                    data={drainaseData}
-                    style={{ color: "#389fff", weight: 1 }}
-                    onEachFeature={onEachJaringanFeature}
-                  />
-                )}
-              </LayersControl.Overlay>
+                <LayersControl.Overlay
+                  checked={showLimbah}
+                  name="Jaringan Limbah"
+                >
+                  {limbahData && (
+                    <GeoJSON
+                      data={limbahData}
+                      style={{ color: "#ff383a", weight: 1 }}
+                      onEachFeature={onEachJaringanFeature}
+                    />
+                  )}
+                </LayersControl.Overlay>
 
-              <LayersControl.Overlay checked={showWilayah} name="Wilayah">
-                {geoJsonData && (
-                  <GeoJSON data={geoJsonData} onEachFeature={onEachFeature} />
-                )}
-              </LayersControl.Overlay>
-            </LayersControl>
+                <LayersControl.Overlay
+                  checked={true}
+                  name="Indikator Lingkungan"
+                >
+                  {geoJsonData && (
+                    <GeoJSON data={geoJsonData} onEachFeature={onEachFeature} />
+                  )}
+                </LayersControl.Overlay>
+              </LayersControl>
+            </div>
           </MapContainer>
 
-          {/* Spinner animation keyframes */}
-          <style>{`
+          <style>
+            {`
     @keyframes spin {
       0% { transform: rotate(0deg);}
       100% { transform: rotate(360deg);}
     }
-  `}</style>
+  `}
+          </style>
         </div>
-
-        {/* Sidebar */}
-        <div
-          style={{
-            width: sidebarOpen ? "35%" : "60px",
-            minWidth: sidebarOpen ? "300px" : "60px",
-            transition: "width 0.3s",
-            background: "#ffffff",
-            borderLeft: "1px solid #ddd",
-            boxShadow: "-2px 0 20px rgba(0,0,0,0.05)",
-            display: "flex",
-            flexDirection: "column",
-            alignItems: "center",
-            position: "relative",
-            padding: sidebarOpen ? "20px" : "10px 5px",
-          }}
-        >
+        <div className={`sidebar-container ${sidebarOpen ? "open" : "closed"}`}>
           <h2
+            className="sidebar-title"
             style={{
               fontWeight: 700,
               fontSize: "22px",
@@ -663,7 +654,6 @@ const MapWithChart = () => {
             />
             Indikator Lingkungan
           </h2>
-
           <select
             className="dropdown-select"
             value={selectedGroup}
@@ -680,7 +670,6 @@ const MapWithChart = () => {
               </option>
             ))}
           </select>
-
           {selectedFeatureId ? (
             <div
               style={{
@@ -735,7 +724,6 @@ const MapWithChart = () => {
               Klik wilayah pada peta untuk menampilkan chart!
             </p>
           )}
-
           <div className="download-container">
             <button
               onClick={() => setMetadataModalOpen(true)}
@@ -749,7 +737,6 @@ const MapWithChart = () => {
               Download Metadata
             </button>
           </div>
-
           {isMetadataModalOpen && (
             <div className="metadata-download-overlay">
               <div className="metadata-download-modal">
@@ -797,8 +784,6 @@ const MapWithChart = () => {
               </div>
             </div>
           )}
-
-          {/* Bantuan Button */}
           <button onClick={() => setShowHelp(true)} className="help-button">
             <img src="/icons/help.svg" alt="Keterangan" className="help-icon" />
             Keterangan
@@ -806,9 +791,8 @@ const MapWithChart = () => {
         </div>
       </div>
 
-      {/* Modal Bantuan */}
       {showHelp && (
-        <div className="modal-overlay" onClick={() => setShowHelp(false)}>
+        <div className="help-modal-overlay" onClick={() => setShowHelp(false)}>
           <div
             className="modal-content"
             onClick={(e) => e.stopPropagation()}
@@ -824,7 +808,6 @@ const MapWithChart = () => {
               fontFamily: "Poppins, sans-serif",
             }}
           >
-            {/* Tombol Tutup */}
             <button
               onClick={() => setShowHelp(false)}
               className="modal-close-button"
@@ -859,7 +842,6 @@ const MapWithChart = () => {
               Keterangan
             </h3>
 
-            {/* Tabs */}
             <div
               style={{
                 display: "flex",
@@ -896,72 +878,133 @@ const MapWithChart = () => {
               ))}
             </div>
 
-            {/* Tab Content */}
-            <div style={{ lineHeight: "1.6", fontSize: "14px", color: "#444" }}>
+            <div className="panduan-list-wrapper">
               {activeTab === "panduan" && (
-                <ul style={{ paddingLeft: "20px" }}>
+                <ul className="panduan-list">
                   <li>
-                    Pilih grup parameter di dropdown untuk melihat jenis
-                    indikator.
+                    Klik wilayah pada area peta atau cari lokasi untuk mencari
+                    wilayah yang diinginkan
                   </li>
-                  <li>Klik wilayah di peta untuk menampilkan indikator.</li>
                   <li>
-                    Gunakan fitur pencarian lokasi untuk mencari wilayah
-                    tertentu.
+                    Pilih layer jaringan air minum, jaringan drainase, atau
+                    jaringan limbah apabila ingin melihat visualisasi jaringan
                   </li>
-                  <li>Grafik akan muncul setelah wilayah dipilih.</li>
+                  <li>Pilih grup parameter pada menu indikator lingkungan</li>
+                  <li>Grafik data D3TLH akan muncul setelah wilayah di klik</li>
+                  <li>
+                    Arahkan kursor pada grafik untuk melihat angka numerik dari
+                    nilai aktual dan nilai rata-rata
+                  </li>
+                  <li>
+                    Untuk melihat rangkuman status data, dapat melakukan klik
+                    pada menu "Lihat Rangkuman Status"
+                  </li>
+                  <li>
+                    Untuk melakukan pengunduhan metadata, dapat melalui menu
+                    "Download Metadata"
+                  </li>
                 </ul>
               )}
 
               {activeTab === "sumber" && (
-                <ul style={{ paddingLeft: "20px" }}>
-                  <li>Kerentanan Bencana: BNPB</li>
-                  <li>Efisiensi Sumber Daya Alam: DLHK Kota Bandung</li>
-                  <li>Potensi Beban Pencemar: DLHK Kota Bandung</li>
-                  <li>Indeks Jasa Ekosistem: DLHK Kota Bandung</li>
-                  <li>Jumlah Penduduk: DLHK Kota Bandung</li>
-                  <li>Data Pola Ruang: ATR/BPN</li>
+                <ul className="sumber-list">
+                  <li>
+                    <strong>Kerentanan Bencana :</strong> InaRisk 2021 - Badan
+                    Nasional Penanggulangan Bencana (BNPB)
+                  </li>
+                  <li>
+                    <strong>Efisiensi Sumber Daya Alam :</strong> Kajian
+                    Lingkungan Hidup Strategis (KLHS) RTRW Kota Bandung
+                    2022-2042 - Badan Perencanaan Pembangunan Nasional
+                    (Bappenas)
+                  </li>
+                  <li>
+                    <strong>Potensi Beban Pencemar dan Timbulan :</strong>{" "}
+                    Kajian Lingkungan Hidup Strategis (KLHS) RTRW Kota Bandung
+                    2022-2042 - Badan Perencanaan Pembangunan Nasional
+                    (Bappenas)
+                  </li>
+                  <li>
+                    <strong>Indeks Jasa Ekosistem :</strong> Kajian Lingkungan
+                    Hidup Strategis (KLHS) RTRW Kota Bandung 2022-2042 - Badan
+                    Perencanaan Pembangunan Nasional (Bappenas)
+                  </li>
+                  <li>
+                    <strong>Jumlah Penduduk :</strong> Kajian Lingkungan Hidup
+                    Strategis (KLHS) RTRW Kota Bandung 2022-2042 - Badan
+                    Perencanaan Pembangunan Nasional (Bappenas)
+                  </li>
+                  <li>
+                    <strong>
+                      Data Jaringan (Air Minum, Drainase, dan Limbah) :
+                    </strong>{" "}
+                    Dinas Lingkungan Hidup dan Kebersihan (DLHK) Kota Bandung
+                  </li>
+                  <li>
+                    <strong>Pola Ruang :</strong> Kementerian Agraria dan Tata
+                    Ruang/Badan Pertanahan Nasional (ATR/BPN)
+                  </li>
                 </ul>
               )}
 
               {activeTab === "definisi" && (
-                <>
+                <div className="definisi-list">
                   <p>
-                    <strong>Kerentanan Bencana:</strong> Menunjukkan tingkat
-                    risiko wilayah terhadap bencana berdasarkan kondisi fisik
-                    dan sosial. Membantu mitigasi risiko bencana.
+                    <strong>Data Proyeksi :</strong> Estimasi jumlah nilai dari
+                    suatu indikator yang akan dihasilkan di masa depan. Proyeksi
+                    ini dibuat dalam interval waktu 10 tahun
                   </p>
                   <p>
-                    <strong>Efisiensi Sumber Daya Alam:</strong> Mengukur
-                    seberapa hemat sumber daya alam (air, energi, lahan)
-                    digunakan dalam suatu wilayah. Digunakan untuk evaluasi
-                    keberlanjutan.
+                    <strong>DDLH Air :</strong> Batas maksimum jumlah penduduk
+                    pada suatu wilayah yang dapat terpenuhi kebutuhan terhadap
+                    air
                   </p>
                   <p>
-                    <strong>Potensi Beban Pencemar:</strong> Estimasi limbah
-                    yang dihasilkan masyarakat, termasuk sampah padat dan cair.
-                    Berguna dalam pengendalian pencemaran.
+                    <strong>DDLH Pangan :</strong> Representasi jumlah penduduk
+                    yang dapat terpenuhi kebutuhan pangan berdasarkan
+                    ketersediaan pangannya di suatu wilayah
                   </p>
                   <p>
-                    <strong>Indeks Jasa Ekosistem:</strong> Menilai kemampuan
-                    lingkungan dalam menyediakan manfaat ekologis seperti
-                    penyerapan karbon, peneduhan, dan pengendalian air.
+                    <strong>Efisiensi Sumber Daya Alam :</strong> Seberapa
+                    optimal potensi sumber daya alam telah dimanfaatkan.
+                    Kekayaan alam ini dapat berwujud seperti tanah, air,
+                    tumbuhan, segala benda yang dapat diolah kembali oleh
+                    manusia
                   </p>
                   <p>
-                    <strong>Jumlah Penduduk:</strong> Jumlah total penduduk per
-                    wilayah. Digunakan untuk proyeksi dan penyediaan layanan
-                    dasar.
+                    <strong>Indeks Jasa Ekosistem :</strong> Kemampuan
+                    lingkungan yang dihasilkan oleh ekosistem dalam menyediakan
+                    manfaat ekologis
                   </p>
                   <p>
-                    <strong>Data Proyeksi:</strong> Prediksi masa depan
-                    indikator berdasarkan tren historis. Digunakan untuk
-                    perencanaan strategis dan kebijakan.
+                    <strong>Jumlah Penduduk :</strong> Jumlah penduduk pada
+                    suatu wilayah
                   </p>
-                </>
+                  <p>
+                    <strong>Kerentanan Bencana :</strong> Suatu kondisi dari
+                    suatu komunitas atau masyarakat yang mengarah atau
+                    menyebabkan ketidakmampuan dalam menghadapi bencana.
+                    Kerentanan disusun berdasarkan parameter sosial budaya,
+                    ekonomi, fisik, dan lingkungan
+                  </p>
+                  <p>
+                    <strong>Potensi Beban Pencemar </strong> Estimasi jumlah zat
+                    pencemar yang berpotensi masuk ke badan air dari berbagai
+                    sumber, zat pencemar ini berisiko menurunkan kualitas air
+                    dan berdampak terhadap keberlanjutan fungsi ekosistem
+                  </p>
+                  <p>
+                    <strong>Timbulan Lumpur Tinja :</strong> Representasi volume
+                    lumpur tinja yang dihasilkan dari sistem sanitasi
+                  </p>
+                  <p>
+                    <strong>Timbulan Sampah :</strong> Jumlah sampah yang
+                    dihasilkan oleh penduduk pada suatu poligon
+                  </p>
+                </div>
               )}
             </div>
 
-            {/* Tombol Tutup */}
             <button
               onClick={() => setShowHelp(false)}
               style={{

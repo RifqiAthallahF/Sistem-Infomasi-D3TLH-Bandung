@@ -1,35 +1,50 @@
-app.css: * {
+/* Reset dan font */
+* {
   text-decoration: none;
-  margin: 0px;
-  padding: 0px;
+  margin: 0;
+  padding: 0;
 }
 
 html,
 body {
   height: 100%;
-}
-
-body {
-  margin: 0;
-  padding: 0;
-  font-family: "Inter", sans-serif;
-  background: url("/bg.jpg");
-  background-size: cover;
-  position: relative;
   overflow-x: hidden;
 }
 
-body::before {
+#root {
+  transform: scale(0.95);
+  transform-origin: top left;
+  width: 105.3%;
+  height: 105.3vh;
+}
+.scale-wrapper {
+  transform: scale(0.95);
+  transform-origin: top left;
+  width: 105.3%;
+  min-height: 105.3vh;
+}
+
+body {
+  background: url("/bg.jpg");
+  background-size: cover;
+  background-position: center;
+  margin: 0;
+  padding: 0;
+  font-family: "Inter", sans-serif;
+}
+
+html::before {
   content: "";
-  position: fixed; /* ganti dari absolute ke fixed */
+  position: fixed;
   top: 0;
   left: 0;
-  width: 100%;
-  height: 100%;
+  height: 100vh;
+  width: 100vw;
   background: #1b23169f;
   z-index: -1;
 }
 
+/* Container utama */
 .wrapper {
   max-width: 1440px;
   width: 100%;

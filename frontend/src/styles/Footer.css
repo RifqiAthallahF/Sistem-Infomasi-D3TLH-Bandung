@@ -9,7 +9,6 @@
   flex-direction: column;
 }
 
-/* BAGIAN ATAS */
 .footer-top {
   display: flex;
   justify-content: space-between;
@@ -19,7 +18,6 @@
   margin-bottom: -50px;
 }
 
-/* KIRI: Alamat + Logo */
 .footer-left {
   display: flex;
   flex-direction: column;
@@ -46,20 +44,19 @@
   opacity: 0.7;
 }
 
-/* Logo ITB + DLHK + Bandung */
 .footer-logos-itb {
   display: flex;
   flex-direction: column;
-  padding-left: 10px;
+  padding-left: 0px;
 }
 
 .footer-logos {
   display: flex;
   align-items: center;
   flex-wrap: wrap;
-  gap: 0px; /* Jarak antar logo */
+  gap: 0px;
   justify-content: flex-start;
-  width: 100%;
+  width: 110%;
 }
 
 .logo-itb-group {
@@ -92,19 +89,18 @@
 }
 
 .footer-logo-small {
-  height: 65px; /* Ukuran logo tetap */
-  max-width: 100%; /* Menghindari logo terlalu besar */
+  height: 65px;
+  max-width: 100%;
   object-fit: contain;
   transition: transform 0.3s ease;
-  flex-shrink: 0; /* Mencegah logo mengecil */
+  flex-shrink: 0;
 }
 
-/* TENGAH: Kontak */
 .footer-contact {
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: 0px; /* Bisa juga 1px kalau masih ingin ada sedikit jarak */
+  gap: 0px;
   flex: 1;
 }
 
@@ -112,22 +108,20 @@
   font-size: 14px;
   font-weight: 600;
   margin: 0;
-  line-height: 1; /* Tambahan untuk kontrol vertikal spacing */
+  line-height: 1;
 }
 
 .footer-contact p {
   font-size: 13px;
   margin: 0;
   opacity: 1;
-  line-height: 1.2; /* Lebih rapat dari nilai default (sekitar 1.5–1.6) */
+  line-height: 1.2;
 }
 
-/* Tambahkan ini untuk mengatur jarak hanya antar paragraf */
 .footer-contact p + p {
-  margin-top: -10px; /* Atau sesuaikan seperti 2px, 6px tergantung kebutuhan */
+  margin-top: -10px;
 }
 
-/* KANAN: Sosial Media */
 .footer-socials-wrapper {
   display: flex;
   flex-direction: column;
@@ -159,16 +153,14 @@
   transform: scale(1.15);
 }
 
-/* PEMISAH */
 .footer-divider {
   height: 0.5px;
-  margin-top: 48px; /* Geser ke bawah agar berada di atas copyright */
-  margin-bottom: 5px; /* Atur jarak atas-bawah jika perlu */
+  margin-top: 48px;
+  margin-bottom: 5px;
   border: none;
   background-color: rgb(255, 255, 255);
 }
 
-/* BAGIAN BAWAH */
 .footer-bottom {
   display: flex;
   justify-content: center;
@@ -186,25 +178,388 @@
 }
 
 /* RESPONSIF */
+@media screen and (max-width: 991px) {
+  .footer-custom {
+    padding: 20px;
+  }
+
+  .footer-top {
+    flex-direction: column;
+    align-items: center;
+    gap: 30px;
+    margin-bottom: 0;
+  }
+
+  .footer-left,
+  .footer-contact,
+  .footer-socials-wrapper {
+    flex: none;
+    width: 100%;
+    align-items: center;
+    text-align: center;
+    padding: 0 10px;
+  }
+
+  .footer-address h4,
+  .footer-address p,
+  .footer-contact h4,
+  .footer-contact p,
+  .footer-socials-wrapper h4,
+  .footer-itb-text h4,
+  .footer-itb-text p {
+    font-size: 12px;
+  }
+
+  .footer-logo-small {
+    height: 50px;
+  }
+
+  .footer-logos {
+    justify-content: center;
+    gap: 10px;
+    width: 100%;
+  }
+
+  .footer-itb-text h4 {
+    margin-top: 5px;
+  }
+
+  .footer-socials {
+    justify-content: center;
+    gap: 15px;
+  }
+
+  .footer-divider {
+    margin-top: 20px;
+    margin-bottom: 10px;
+  }
+
+  .footer-info-center {
+    font-size: 11px;
+    margin-bottom: 0;
+    margin-top: 5px;
+    text-align: center;
+  }
+}
+
 @media (max-width: 768px) {
   .footer-top {
     flex-direction: column;
     align-items: center;
-    text-align: center;
+    gap: 30px;
+    margin-bottom: 0;
   }
 
   .footer-left,
   .footer-contact,
   .footer-socials-wrapper {
     align-items: center;
+    text-align: center;
+    flex: unset;
+    width: 100%;
+  }
+
+  .footer-logos-itb {
+    padding-left: 0;
+    align-items: center;
   }
 
   .footer-logos {
-    justify-content: center; /* Pusatkan logo di layar kecil */
-    gap: 15px; /* Sesuaikan jarak antar logo */
+    justify-content: center;
+  }
+
+  .footer-itb-text h4 {
+    font-size: 13px;
+    margin-top: 8px;
+  }
+
+  .footer-itb-text p {
+    font-size: 10px;
+    padding: 0;
+  }
+
+  .footer-contact h4,
+  .footer-socials-wrapper h4 {
+    font-size: 13px;
+  }
+
+  .footer-contact p {
+    font-size: 12px;
+  }
+
+  .footer-socials {
+    justify-content: center;
+    gap: 15px;
+  }
+
+  .footer-socials img {
+    height: 30px;
+    width: 30px;
+  }
+
+  .footer-bottom {
+    padding-top: 10px;
+  }
+
+  .footer-info-center {
+    font-size: 11px;
+    margin-bottom: -10px;
+    margin-top: 4px;
+  }
+}
+
+@media screen and (max-width: 695px) {
+  .footer-custom {
+    padding: 16px;
+  }
+
+  .footer-top {
+    gap: 25px;
+  }
+
+  .footer-address h4,
+  .footer-contact h4,
+  .footer-socials-wrapper h4,
+  .footer-itb-text h4 {
+    font-size: 11px;
+  }
+
+  .footer-address p,
+  .footer-contact p,
+  .footer-itb-text p {
+    font-size: 11px;
+    line-height: 1.4;
   }
 
   .footer-logo-small {
-    height: 60px; /* Menyesuaikan ukuran logo di layar kecil */
+    height: 45px;
+  }
+
+  .footer-socials {
+    gap: 12px;
+  }
+
+  .footer-info-center {
+    font-size: 10px;
+  }
+}
+
+@media screen and (max-width: 620px) {
+  .footer-custom {
+    padding: 14px;
+  }
+
+  .footer-top {
+    gap: 20px;
+  }
+
+  .footer-logo-small {
+    height: 40px;
+  }
+
+  .footer-address h4,
+  .footer-contact h4,
+  .footer-socials-wrapper h4,
+  .footer-itb-text h4 {
+    font-size: 10px;
+  }
+
+  .footer-address p,
+  .footer-contact p,
+  .footer-itb-text p {
+    font-size: 10px;
+  }
+
+  .footer-socials {
+    gap: 10px;
+  }
+
+  .footer-info-center {
+    font-size: 9.5px;
+  }
+}
+
+@media screen and (max-width: 550px) {
+  .footer-custom {
+    padding: 12px;
+  }
+
+  .footer-top {
+    gap: 18px;
+  }
+
+  .footer-logo-small {
+    height: 35px;
+  }
+
+  .footer-address h4,
+  .footer-contact h4,
+  .footer-socials-wrapper h4,
+  .footer-itb-text h4 {
+    font-size: 9.5px;
+  }
+
+  .footer-address p,
+  .footer-contact p,
+  .footer-itb-text p {
+    font-size: 9px;
+  }
+
+  .footer-socials {
+    gap: 8px;
+  }
+
+  .footer-info-center {
+    font-size: 9px;
+  }
+}
+
+@media screen and (max-width: 500px) {
+  .footer-custom {
+    padding: 10px;
+  }
+
+  .footer-top {
+    gap: 15px;
+  }
+
+  .footer-logo-small {
+    height: 30px;
+  }
+
+  .footer-address h4,
+  .footer-contact h4,
+  .footer-socials-wrapper h4,
+  .footer-itb-text h4 {
+    font-size: 9px;
+  }
+
+  .footer-address p,
+  .footer-contact p,
+  .footer-itb-text p {
+    font-size: 8.5px;
+  }
+
+  .footer-socials {
+    gap: 6px;
+  }
+
+  .footer-info-center {
+    font-size: 8.5px;
+    padding: 0 10px;
+  }
+}
+
+@media screen and (max-width: 426px) {
+  .footer-custom {
+    padding: 15px;
+  }
+
+  .footer-top {
+    gap: 20px;
+  }
+
+  .footer-left,
+  .footer-contact,
+  .footer-socials-wrapper {
+    padding: 0 8px;
+  }
+
+  .footer-address h4,
+  .footer-address p,
+  .footer-contact h4,
+  .footer-contact p,
+  .footer-socials-wrapper h4,
+  .footer-itb-text h4,
+  .footer-itb-text p {
+    font-size: 9px;
+  }
+
+  .footer-logo-small {
+    height: 40px;
+  }
+
+  .footer-socials {
+    gap: 12px;
+  }
+
+  .footer-info-center {
+    font-size: 10px;
+  }
+}
+
+@media screen and (max-width: 376px) {
+  .footer-custom {
+    padding: 12px;
+  }
+
+  .footer-top {
+    gap: 15px;
+  }
+
+  .footer-left,
+  .footer-contact,
+  .footer-socials-wrapper {
+    padding: 0 6px;
+  }
+
+  .footer-address h4,
+  .footer-address p,
+  .footer-contact h4,
+  .footer-contact p,
+  .footer-socials-wrapper h4,
+  .footer-itb-text h4,
+  .footer-itb-text p {
+    font-size: 8px;
+  }
+
+  .footer-logo-small {
+    height: 35px;
+  }
+
+  .footer-socials {
+    gap: 10px;
+  }
+
+  .footer-info-center {
+    font-size: 9.5px;
+  }
+}
+
+@media screen and (max-width: 320px) {
+  .footer-custom {
+    padding: 10px;
+  }
+
+  .footer-top {
+    gap: 12px;
+  }
+
+  .footer-left,
+  .footer-contact,
+  .footer-socials-wrapper {
+    padding: 0 5px;
+  }
+
+  .footer-address h4,
+  .footer-address p,
+  .footer-contact h4,
+  .footer-contact p,
+  .footer-socials-wrapper h4,
+  .footer-itb-text h4,
+  .footer-itb-text p {
+    font-size: 6px;
+  }
+
+  .footer-logo-small {
+    height: 30px;
+  }
+
+  .footer-socials {
+    gap: 8px;
+  }
+
+  .footer-info-center {
+    font-size: 9px;
   }
 }

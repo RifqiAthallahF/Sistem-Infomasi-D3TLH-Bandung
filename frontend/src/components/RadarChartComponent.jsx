@@ -25,28 +25,39 @@ const RadarChartComponent = ({ parameters, dataSource, selectedGroup }) => {
   const [btnHover, setBtnHover] = useState(false);
   const [closeBtnHover, setCloseBtnHover] = useState(false);
 
-  useEffect(() => {
-    const handleResize = () => {
-      setIsCompact(window.innerWidth < 600);
-    };
-    handleResize();
-    window.addEventListener("resize", handleResize);
-    return () => window.removeEventListener("resize", handleResize);
-  }, []);
+  const [fontSize, setFontSize] = useState(12);
 
-  const excludedThresholdLabels =
-    selectedGroup === "Potensi Beban Pencemar"
-      ? ["Biochemical Oxygen", "Chemical Oxygen", "Suspended Solid"]
-      : [];
+  useEffect(() => {
+    const updateFontSize = () => {
+      const width = window.innerWidth;
+      if (width <= 320) {
+        setFontSize(5);
+      } else if (width <= 376) {
+        setFontSize(6);
+      } else if (width <= 426) {
+        setFontSize(6);
+      } else if (width <= 476) {
+        setFontSize(7);
+      } else if (width <= 500) {
+        setFontSize(7);
+      } else if (width <= 550) {
+        setFontSize(9);
+      } else {
+        setFontSize(12);
+      }
+    };
+
+    updateFontSize(); // panggil pertama kali
+    window.addEventListener("resize", updateFontSize);
+    return () => window.removeEventListener("resize", updateFontSize);
+  }, []);
 
   const labels = parameters.map((p) => p.label);
   const dataActual = parameters.map(
     (p) => Number(dataSource?.aktual?.[p.field]) || 0
   );
-  const dataThreshold = parameters.map((p) =>
-    excludedThresholdLabels.includes(p.label)
-      ? null
-      : Number(dataSource?.rata_rata?.[p.thresholdField]) || 0
+  const dataThreshold = parameters.map(
+    (p) => Number(dataSource?.rata_rata?.[p.thresholdField]) || 0
   );
 
   const datasets = [
@@ -80,18 +91,11 @@ const RadarChartComponent = ({ parameters, dataSource, selectedGroup }) => {
     },
   ];
 
-  const parameterStatus = parameters.map((p, i) => {
+  const parameterStatus = parameters.map((p) => {
     const actual = Number(dataSource?.aktual?.[p.field]) || 0;
-    const threshold = excludedThresholdLabels.includes(p.label)
-      ? null
-      : Number(dataSource?.rata_rata?.[p.thresholdField]) || 0;
+    const threshold = Number(dataSource?.rata_rata?.[p.thresholdField]) || 0;
 
-    const status =
-      threshold === null
-        ? null
-        : actual > threshold
-        ? "Melampaui"
-        : "Tidak Melampaui";
+    const status = actual > threshold ? "Melampaui" : "Tidak Melampaui";
 
     return {
       label: p.label,
@@ -104,10 +108,9 @@ const RadarChartComponent = ({ parameters, dataSource, selectedGroup }) => {
       className="radar-container"
       style={{ height: isCompact ? "320px" : "100%" }}
     >
-      {/* Radar Chart dan Legend */}
       <div
         className="radar-chart-wrapper"
-        style={{ height: isCompact ? "400px" : "600px" }}
+        style={{ height: isCompact ? "400px" : "800px" }}
       >
         <Radar
           data={{ labels, datasets }}
@@ -134,7 +137,7 @@ const RadarChartComponent = ({ parameters, dataSource, selectedGroup }) => {
                   color: "#666",
                   backdropColor: "transparent",
                   font: {
-                    size: isCompact ? 9 : 11,
+                    size: fontSize,
                     family: "Poppins",
                   },
                 },
@@ -143,7 +146,7 @@ const RadarChartComponent = ({ parameters, dataSource, selectedGroup }) => {
                 },
                 pointLabels: {
                   font: {
-                    size: isCompact ? 9 : 12,
+                    size: fontSize,
                     weight: "600",
                     family: "Poppins",
                   },
@@ -157,7 +160,7 @@ const RadarChartComponent = ({ parameters, dataSource, selectedGroup }) => {
                 position: "bottom",
                 labels: {
                   font: {
-                    size: 12,
+                    size: fontSize,
                     family: "Poppins",
                   },
                   color: "#444",
@@ -214,31 +217,27 @@ const RadarChartComponent = ({ parameters, dataSource, selectedGroup }) => {
         />
       </div>
 
-      {/* Tombol cek status di bawah chart */}
-      {!isCompact && (
-        <div className="radar-button-wrapper">
-          <button
-            className={`radar-button ${btnHover ? "hover" : ""}`}
-            onMouseEnter={() => setBtnHover(true)}
-            onMouseLeave={() => setBtnHover(false)}
-            onClick={() => setModalOpen(true)}
-          >
-            <img
-              src="/icons/alert.svg"
-              alt="Status Parameter"
-              style={{
-                width: "18px",
-                height: "18px",
-                verticalAlign: "middle",
-                marginRight: "7px",
-              }}
-            />
-            Lihat Rangkuman Status
-          </button>
-        </div>
-      )}
+      <div className="radar-button-wrapper">
+        <button
+          className={`radar-button ${btnHover ? "hover" : ""}`}
+          onMouseEnter={() => setBtnHover(true)}
+          onMouseLeave={() => setBtnHover(false)}
+          onClick={() => setModalOpen(true)}
+        >
+          <img
+            src="/icons/alert.svg"
+            alt="Status Parameter"
+            style={{
+              width: "18px",
+              height: "18px",
+              verticalAlign: "middle",
+              marginRight: "7px",
+            }}
+          />
+          Lihat Rangkuman Status
+        </button>
+      </div>
 
-      {/* Modal */}
       {modalOpen && (
         <div
           className="radar-modal-overlay"
@@ -268,6 +267,13 @@ const RadarChartComponent = ({ parameters, dataSource, selectedGroup }) => {
                 </li>
               ))}
             </ul>
+
+            {/* Keterangan rata-rata */}
+            <p className="modal-note">
+              <strong>Keterangan:</strong> Rata-rata adalah nilai rata-rata
+              indikator lingkungan di Kota Bandung.
+            </p>
+
             <div className="radar-modal-footer">
               <button
                 className={`radar-close-button ${closeBtnHover ? "hover" : ""}`}

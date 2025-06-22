@@ -1,4 +1,3 @@
-/* Reset & dasar */
 html,
 body {
   margin: 0;
@@ -19,7 +18,6 @@ body {
   display: flex;
   flex: 1;
   overflow: hidden;
-  /* desktop default: side by side */
   flex-direction: row;
 }
 
@@ -28,21 +26,24 @@ body {
   flex: 1;
   width: 70%;
   height: 100%;
-  min-width: 0; /* penting agar flex item bisa menyusut */
+  min-width: 0;
 }
 
-.sidebar {
-  width: 30%;
-  background: white;
-  padding: 20px 20px 15px 20px;
-  box-shadow: -3px 0 10px rgba(0, 0, 0, 0.2);
-  overflow-y: auto;
-  height: 100%;
+.sidebar-container {
+  transition: width 0.3s;
+  background: #ffffff;
+  border-left: 1px solid #ddd;
+  box-shadow: -2px 0 20px rgba(0, 0, 0, 0.05);
   display: flex;
   flex-direction: column;
-  justify-content: flex-start;
   align-items: center;
-  min-width: 280px;
+  position: relative;
+}
+
+.sidebar-container.open {
+  width: 35%;
+  min-width: 300px;
+  padding: 20px;
 }
 
 .gov-access-box {
@@ -53,27 +54,25 @@ body {
   border-radius: 8px;
 }
 
-/* Fokus elemen Leaflet */
 .leaflet-interactive:focus {
   outline: none !important;
   box-shadow: none !important;
 }
 
-/* Radar Chart dan tombol */
 .radar-container {
   display: flex;
   flex-direction: column;
   align-items: center;
   gap: 1.7rem;
   width: 100%;
-  height: 100%; /* sesuai style inline kamu */
+  height: 100%;
 }
 
 .radar-button-wrapper {
   display: flex;
   justify-content: center;
   width: 100%;
-  margin-top: auto; /* push tombol ke paling bawah container */
+  margin-top: auto;
 }
 
 .radar-button,
@@ -110,7 +109,6 @@ body {
   transition: none;
 }
 
-/* Wrapper Chart */
 .radar-chart-wrapper {
   position: relative;
   width: 105%;
@@ -118,7 +116,6 @@ body {
   margin-top: -22px;
 }
 
-/* Modal Radar */
 .radar-modal-overlay {
   position: fixed;
   inset: 0;
@@ -146,6 +143,20 @@ body {
   font-weight: 700;
   text-align: center;
   margin-bottom: 1.25rem;
+}
+
+.modal-note {
+  background: linear-gradient(to right, #e6f4ea, #f0fdf4);
+  border-left: 4px solid #34a853;
+  font-size: 0.85rem;
+  color: #2e7d32;
+  font-style: normal;
+  text-align: center;
+  padding: 0.75rem 1rem;
+  border-radius: 0.5rem;
+  margin: 1.5rem auto 1rem auto;
+  max-width: 360px;
+  box-shadow: 0 1px 6px rgba(0, 0, 0, 0.04);
 }
 
 .modal-title-icon {
@@ -182,15 +193,9 @@ body {
 }
 
 .parameter-label {
-  color: rgba(
-    34,
-    139,
-    34,
-    1
-  ); /* warna hijau yang sama dengan garis 'Nilai Aktual' */
+  color: rgba(34, 139, 34, 1);
 }
 
-/* Tombol status */
 .status-button {
   background-color: #228b22;
   color: white;
@@ -211,7 +216,7 @@ body {
 
 .bar-chart-container {
   padding: 0px;
-  margin-top: 20px;
+  margin-top: 10px;
   font-family: "Poppins", sans-serif;
   color: #000;
   font-weight: bold;
@@ -277,7 +282,7 @@ body {
 }
 
 .download-button {
-  padding: 10px 20px;
+  padding: 10px 19px;
   background-color: #4e944f;
   color: white;
   border: none;
@@ -299,7 +304,6 @@ body {
   height: 18px;
 }
 
-/* Hover & Active */
 .help-button:hover,
 .download-button:hover {
   transform: translateY(-4px);
@@ -313,7 +317,7 @@ body {
 }
 
 .help-button {
-  padding: 10px 20px;
+  padding: 12px 24px;
   background-color: #4e944f;
   color: white;
   border: none;
@@ -327,14 +331,38 @@ body {
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
   transition: transform 0.2s ease, box-shadow 0.3s ease;
   position: absolute;
-  bottom: 20px;
-  right: 20px;
+  bottom: 15px;
+  right: 15px;
   z-index: 1000;
+
+  width: fit-content;
+  max-width: 250px;
 }
 
 .help-icon {
   width: 18px;
   height: 18px;
+}
+
+.help-button:hover {
+  transform: scale(1.05);
+}
+
+.modal-close-button:hover {
+  background-color: #3b7a3c;
+}
+
+.help-modal-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 110vw;
+  height: 135.3vh;
+  background-color: rgba(0, 0, 0, 0.4);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 9999;
 }
 
 .metadata-download-overlay {
@@ -415,7 +443,6 @@ body {
   color: #4caf50;
 }
 
-/* Modal */
 .modal-overlay {
   position: fixed;
   top: 0;
@@ -434,7 +461,6 @@ body {
   animation: slideUp 0.3s ease-out;
 }
 
-/* Animasi keyframes */
 @keyframes fadeIn {
   from {
     opacity: 0;
@@ -455,16 +481,6 @@ body {
   }
 }
 
-/* Tombol */
-.help-button:hover {
-  transform: scale(1.05);
-}
-
-.modal-close-button:hover {
-  background-color: #3b7a3c;
-}
-
-/* Dropdown */
 .dropdown-select {
   appearance: none;
   -webkit-appearance: none;
@@ -498,7 +514,6 @@ body {
   box-shadow: 0 0 0 3px rgba(100, 100, 100, 0.2);
 }
 
-/* Switch neumorphic */
 .switch-neumorphic-label {
   display: flex;
   align-items: center;
@@ -550,98 +565,324 @@ body {
   font-weight: 500;
 }
 
-/* === RESPONSIVE MEDIA QUERIES === */
-
-/* Tablet dan bawah (max 1024px) */
-@media (max-width: 1024px) {
-  .content {
-    flex-direction: column;
-  }
-
-  .map-container {
-    width: 100%;
-    height: 50vh;
-  }
-
-  .sidebar {
-    width: 100%;
-    height: auto;
-    max-height: 40vh;
-    padding: 16px;
-    box-shadow: none;
-    border-top: 1px solid #ddd;
-  }
+.leaflet-control-layers-overlays label:last-child input[type="checkbox"] {
+  display: none;
 }
 
-/* Responsive tweak jika layar kecil */
-@media (max-width: 768px) {
-  .content {
-    flex-direction: column; /* stack map and sidebar vertically */
+.leaflet-control-layers-overlays label:last-child {
+  display: none;
+}
+
+.leaflet-control-layers-overlays label span {
+  display: none !important;
+}
+
+.leaflet-control-layers-overlays input[type="checkbox"] {
+  display: none !important;
+}
+
+.sumber-list {
+  padding-left: 20px;
+  font-family: "Poppins", sans-serif;
+  font-size: 14px;
+  line-height: 1.6;
+  color: #333;
+  list-style-type: disc;
+}
+
+.sumber-list li {
+  margin-bottom: 10px;
+  text-align: justify;
+}
+
+.panduan-list-wrapper {
+  line-height: 1.6;
+  font-size: 14px;
+  color: #444;
+  font-family: "Poppins", sans-serif;
+}
+
+.panduan-list {
+  padding-left: 20px;
+  list-style-type: disc;
+}
+
+.panduan-list li {
+  margin-bottom: 10px;
+  text-align: justify;
+}
+
+.definisi-list {
+  line-height: 1.6;
+  font-size: 14px;
+  color: #444;
+  font-family: "Poppins", sans-serif;
+}
+
+.definisi-list p {
+  margin-bottom: 10px;
+  text-align: justify;
+}
+
+/* === RESPONSIVE MEDIA QUERIES === */
+
+@media (max-width: 1024px) {
+  .sidebar-container.open {
+    width: 50% !important;
+    min-width: unset !important;
+    padding: 20px !important;
   }
 
-  .map-container {
-    width: 100%;
-    height: 50vh; /* separuh tinggi layar */
-  }
-
-  .sidebar {
-    width: 100%;
-    height: 50vh;
-    box-shadow: none;
-    padding: 15px;
-    min-width: 0;
+  .radar-container {
+    height: auto !important;
+    padding: 12px;
   }
 
   .radar-chart-wrapper {
+    height: 400px !important;
+    width: 400px;
+  }
+
+  .radar-button {
+    font-size: 14px;
+    padding: 9px 18px;
+    margin-top: -7px;
+  }
+
+  .bar-chart-container {
     width: 100%;
-    max-width: 100%;
-    margin-top: 0;
+    padding: 0;
+  }
+
+  .help-button {
+    width: 30%;
+    font-size: 14px;
+    padding: 8px 29px;
+  }
+
+  .download-button {
+    width: 75%;
+    font-size: 14px;
+  }
+
+  .leaflet-control-geosearch {
+    width: 55% !important;
+    top: 10px !important;
+    left: -55px !important;
+  }
+}
+
+@media (max-width: 991px) {
+  .sidebar-container.open {
+    width: 45% !important;
+    min-width: unset !important;
+    padding: 20px !important;
+  }
+
+  .radar-container {
+    height: auto !important;
+    padding: 10px;
+  }
+
+  .radar-chart-wrapper {
+    height: 380px !important;
+    width: 360px;
+  }
+
+  .radar-button {
+    font-size: 13px;
+    padding: 8px 16px;
+  }
+
+  .download-button {
+    width: 80%;
+    font-size: 13px;
+  }
+
+  .help-button {
+    width: 30%;
+    font-size: 13px;
+    padding: 8px 13px;
+  }
+
+  .leaflet-control-geosearch {
+    width: 50% !important;
+    top: 10px !important;
+    left: -50px !important;
+  }
+}
+
+@media (max-width: 834px) {
+  .sidebar-container.open {
+    width: 46% !important;
+    min-width: unset !important;
+    padding: 20px !important;
+  }
+
+  .radar-container {
+    height: auto !important;
+    padding: 10px;
+  }
+
+  .radar-chart-wrapper {
+    height: 360px !important;
+    width: 340px;
+  }
+
+  .radar-button {
+    font-size: 13px;
+    padding: 8px 15px;
+    margin-top: 15px;
+  }
+
+  .download-button {
+    width: 85%;
+    font-size: 13px;
+  }
+
+  .help-button {
+    width: 32%;
+    font-size: 13px;
+    padding: 8px 17px;
+  }
+
+  .leaflet-control-geosearch {
+    width: 56% !important;
+    top: 10px !important;
+    left: -50px !important;
+  }
+}
+
+@media (max-width: 768px) {
+  .sidebar-container.open {
+    width: 48% !important;
+    min-width: unset !important;
+    padding: 16px !important;
+  }
+
+  .radar-container {
+    height: auto !important;
+    padding: 10px;
+  }
+
+  .radar-chart-wrapper {
+    height: 360px !important;
+    width: 375px;
+  }
+
+  .radar-button-wrapper {
+    margin-top: 16px;
+    text-align: center;
+  }
+
+  .radar-button {
+    font-size: 13px;
+    padding: 8px 16px;
+    border-radius: 8px;
   }
 
   .radar-modal {
-    width: 95%;
-    max-width: 95%;
-    padding: 1rem;
+    width: 90%;
+    max-height: 80vh;
+    overflow-y: auto;
+    padding: 20px;
+    font-size: 14px;
   }
 
   .radar-modal-title {
-    font-size: 1.1rem;
+    font-size: 16px;
+    margin-bottom: 16px;
   }
 
-  .radar-button,
-  .radar-close-button,
-  .status-button,
-  .download-button,
-  .help-button {
+  .radar-status-item {
+    font-size: 13px;
+    margin-bottom: 8px;
+  }
+
+  .radar-close-button {
+    padding: 8px 16px;
+    font-size: 14px;
+    border-radius: 6px;
+  }
+
+  .bar-chart-container {
     width: 100%;
-    font-size: 0.85rem;
-    padding: 0.5rem;
-  }
-
-  .help-button {
-    bottom: 15px;
-    right: 15px;
-    padding: 8px 14px;
-  }
-
-  .download-container {
-    flex-direction: column;
-    padding-bottom: 40px;
+    padding: 0 0px;
   }
 
   .bar-chart-legend {
     flex-direction: column;
-    gap: 0.5rem;
+    gap: 0rem;
+    align-items: flex-start;
+    margin-bottom: 0.5rem;
+    font-size: 11px;
+  }
+
+  .bar-chart-legend-item {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+  }
+
+  .bar-chart-color-box {
+    width: 12px;
+    height: 12px;
+    border-radius: 4px;
+  }
+
+  .bar-chart-tooltip-simple {
+    font-size: 13px;
+    padding: 8px;
+    background: white;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+  }
+
+  .recharts-tooltip-wrapper {
+    z-index: 999;
+  }
+
+  .recharts-cartesian-axis-tick-value tspan {
+    font-size: 11px;
+  }
+
+  .recharts-yAxis .recharts-cartesian-axis-tick tspan {
+    font-size: 11px;
+  }
+
+  .recharts-wrapper {
+    font-family: "Poppins", sans-serif;
+  }
+
+  .download-container {
+    flex-direction: column;
+    align-items: center;
+    padding-bottom: 85px;
+  }
+
+  .download-button {
+    width: 85%;
+    max-width: 200px;
+    font-size: 13px;
+    padding: 10px 25px;
+  }
+
+  .help-button {
+    width: 35%;
+    font-size: 13px;
+    padding: 8px 19px;
+    bottom: 10px;
+    right: 10px;
   }
 
   .metadata-download-modal {
     width: 90%;
-    padding: 1rem;
+    padding: 1.5rem;
   }
 
   .metadata-download-buttons {
     flex-direction: column;
-    gap: 10px;
+    gap: 0.75rem;
   }
 
   .metadata-download-button,
@@ -649,19 +890,1064 @@ body {
     width: 100%;
     text-align: center;
   }
+
+  .dropdown-select {
+    font-size: 14px;
+    padding: 10px 42px 10px 14px;
+    background-position: right 12px center;
+    background-size: 18px;
+  }
+
+  .switch-neumorphic-label {
+    flex-direction: row;
+    font-size: 13px;
+    gap: 6px;
+  }
+
+  .slider-neumorphic {
+    width: 46px;
+    height: 24px;
+  }
+
+  .slider-neumorphic::before {
+    width: 18px;
+    height: 18px;
+    top: 3px;
+    left: 3px;
+  }
+
+  .switch-neumorphic:checked + .slider-neumorphic::before {
+    transform: translateX(22px);
+  }
+
+  .label-text {
+    font-size: 13px;
+  }
+
+  .checkbox-container {
+    top: 7px !important;
+    right: 7px !important;
+    padding: 8px !important;
+    font-size: 10px;
+  }
+
+  .checkbox-container {
+    font-size: 8px;
+    top: 10px !important;
+    right: 7px !important;
+    width: 30%;
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+  }
+
+  .checkbox-container label {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    white-space: nowrap;
+  }
+
+  .leaflet-control-geosearch {
+    width: 50% !important;
+    max-width: 100% !important;
+    top: 10px !important;
+    left: -50px !important;
+  }
+
+  .dropdown-select {
+    font-size: 14px;
+    max-width: 100% !important;
+    width: 100% !important;
+    margin-bottom: 16px !important;
+    padding: 8px 12px;
+    border-radius: 6px;
+  }
 }
 
-/* Footer grid responsif */
-@media (max-width: 768px) {
-  .footer-grid {
-    flex-direction: column;
-    align-items: center;
-    gap: 10px;
+@media (max-width: 695px) {
+  .sidebar-container.open {
+    width: 50% !important;
+    min-width: unset !important;
+    padding: 10px !important;
+  }
+  .leaflet-control-zoom {
+    top: 5px !important;
+    left: -3px !important;
+  }
+
+  .leaflet-control-zoom-in,
+  .leaflet-control-zoom-out {
+    width: 28px !important;
+    height: 28px !important;
+    font-size: 16px !important;
+  }
+  .radar-container {
+    height: auto !important;
+    padding: 10px;
+  }
+
+  .radar-chart-wrapper {
+    height: 340px !important;
+    width: 345px;
+  }
+
+  .radar-button-wrapper {
+    margin-top: 14px;
     text-align: center;
   }
 
-  .footer-left,
-  .footer-right {
-    justify-content: center;
+  .radar-button {
+    font-size: 12px;
+    padding: 8px 14px;
+    border-radius: 6px;
+  }
+
+  .radar-modal {
+    width: 90%;
+    max-height: 75vh;
+    padding: 18px;
+    font-size: 13px;
+  }
+
+  .radar-modal-title {
+    font-size: 15px;
+  }
+
+  .radar-status-item {
+    font-size: 12px;
+  }
+
+  .radar-close-button {
+    font-size: 13px;
+    padding: 7px 14px;
+  }
+
+  .bar-chart-container {
+    width: 100%;
+    padding: 0;
+  }
+
+  .bar-chart-legend {
+    font-size: 10px;
+    gap: 0.4rem;
+  }
+
+  .download-container {
+    flex-direction: column;
+    padding-bottom: 80px;
+  }
+
+  .download-button {
+    width: 80%;
+    font-size: 12px;
+    padding: 10px 30px;
+  }
+
+  .help-button {
+    width: 33%;
+    font-size: 12px;
+    padding: 8px 10px;
+  }
+
+  .checkbox-container {
+    font-size: 8px;
+    top: 10px !important;
+    right: 7px !important;
+    width: 35%;
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+  }
+
+  .checkbox-container label {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    white-space: nowrap;
+  }
+  .leaflet-control-geosearch {
+    width: 45% !important;
+    top: 5px !important;
+    left: -45px !important;
+  }
+
+  .dropdown-select {
+    font-size: 13px;
+    padding: 8px 12px;
+  }
+}
+
+@media (max-width: 620px) {
+  .sidebar-container.open {
+    width: 55% !important;
+    padding: 8px !important;
+  }
+
+  .leaflet-control-zoom {
+    top: 0px !important;
+    left: -3spx !important;
+  }
+
+  .leaflet-control-zoom-in,
+  .leaflet-control-zoom-out {
+    width: 28px !important;
+    height: 28px !important;
+    font-size: 16px !important;
+  }
+  .radar-chart-wrapper {
+    height: 360px !important;
+    width: 355px;
+  }
+
+  .radar-button {
+    font-size: 11px;
+    padding: 7px 12px;
+    margin-top: 0px;
+  }
+
+  .radar-modal {
+    font-size: 13px;
+    padding: 16px;
+  }
+
+  .radar-close-button {
+    font-size: 12px;
+    padding: 7px 12px;
+  }
+
+  .bar-chart-legend {
+    font-size: 10px;
+  }
+
+  .download-button {
+    width: 85%;
+    font-size: 11px;
+  }
+
+  .help-button {
+    width: 30%;
+    font-size: 11px;
+  }
+
+  .checkbox-container {
+    font-size: 8px;
+    top: 10px !important;
+    right: 7px !important;
+    width: 35%;
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+  }
+
+  .checkbox-container label {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    white-space: nowrap;
+  }
+
+  .leaflet-control-geosearch {
+    width: 40% !important;
+    top: 0px !important;
+    left: -34px !important;
+  }
+}
+
+@media (max-width: 550px) {
+  .sidebar-container.open {
+    width: 55% !important;
+    padding: 10px !important;
+  }
+
+  .radar-chart-wrapper {
+    height: 300px !important;
+    width: 325px;
+  }
+
+  .radar-button {
+    font-size: 10px;
+    padding: 6px 10px;
+    margin-top: 30px;
+  }
+
+  .radar-modal {
+    font-size: 12px;
+    padding: 14px;
+  }
+
+  .radar-close-button {
+    font-size: 11px;
+    padding: 6px 10px;
+  }
+
+  .bar-chart-container {
+    width: 110%;
+    padding: 0 10px;
+  }
+
+  .bar-chart-legend {
+    font-size: 10px;
+    margin-bottom: 0.25rem;
+  }
+
+  .download-button {
+    width: 90%;
+    font-size: 11px;
+    padding: 9px 31px;
+  }
+
+  .help-button {
+    width: 35%;
+    font-size: 11px;
+    padding: 7px 17px;
+  }
+
+  .checkbox-container {
+    font-size: 8px;
+    top: 10px !important;
+    right: 7px !important;
+    width: 80%;
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+  }
+
+  .checkbox-container label {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    white-space: nowrap;
+  }
+  .leaflet-control-geosearch {
+    width: 95% !important;
+    top: 90px !important;
+    left: 1px !important;
+  }
+
+  .dropdown-select {
+    font-size: 12px;
+    padding: 8px 10px;
+  }
+}
+
+@media (max-width: 500px) {
+  .sidebar-container.open {
+    width: 53% !important;
+    min-width: unset !important;
+    padding: 3px !important;
+  }
+
+  .sidebar-title {
+    font-size: 20px !important;
+    padding-top: 10px;
+  }
+
+  .sidebar-title img {
+    width: 28px !important;
+    height: 28px !important;
+  }
+  .leaflet-control-zoom {
+    top: 3px !important;
+    left: -3px !important;
+  }
+
+  .leaflet-control-zoom-in,
+  .leaflet-control-zoom-out {
+    width: 28px !important;
+    height: 28px !important;
+    font-size: 16px !important;
+  }
+  .radar-container {
+    height: auto !important;
+    padding: 50px;
+  }
+
+  .radar-chart-wrapper {
+    height: 235px !important;
+    width: 300px;
+  }
+
+  .radar-button-wrapper {
+    margin-top: 12px;
+    text-align: center;
+  }
+
+  .radar-button {
+    font-size: 11px;
+    padding: 7px 14px;
+    border-radius: 6px;
+  }
+
+  .radar-modal {
+    width: 90%;
+    max-height: 80vh;
+    overflow-y: auto;
+    padding: 20px;
+    font-size: 13px;
+  }
+
+  .radar-modal-title {
+    font-size: 15px;
+    margin-bottom: 14px;
+  }
+
+  .radar-status-item {
+    font-size: 12px;
+    margin-bottom: 6px;
+  }
+
+  .radar-close-button {
+    padding: 8px 14px;
+    font-size: 13px;
+    border-radius: 6px;
+  }
+
+  .bar-chart-container {
+    width: 110%;
+    padding-right: 10px;
+  }
+
+  .bar-chart-legend {
+    flex-direction: column;
+    gap: 0rem;
+    align-items: flex-start;
+    margin-bottom: 0.5rem;
+    font-size: 10px;
+  }
+
+  .bar-chart-legend-item {
+    gap: 5px;
+  }
+
+  .bar-chart-color-box {
+    width: 10px;
+    height: 10px;
+    border-radius: 4px;
+  }
+
+  .download-button {
+    width: 80%;
+    max-width: 200px;
+    font-size: 11px;
+    padding: 9px 30px;
+    margin-bottom: 30px;
+  }
+
+  .help-button {
+    width: 40%;
+    font-size: 11px;
+    padding: 7px 14px;
+    bottom: 10px;
+    right: 10px;
+  }
+
+  .checkbox-container {
+    font-size: 8px;
+    top: 10px !important;
+    right: 7px !important;
+    width: 80%;
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+  }
+
+  .checkbox-container label {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    white-space: nowrap;
+  }
+
+  .dropdown-select {
+    font-size: 12px;
+    padding: 9px 12px;
+    border-radius: 6px;
+    margin-bottom: 14px !important;
+    width: 99% !important;
+    max-width: 100% !important;
+  }
+
+  .leaflet-control-geosearch {
+    width: 95% !important;
+    max-width: 100% !important;
+    top: 90px !important;
+    left: 0spx !important;
+  }
+}
+
+@media (max-width: 476px) {
+  .sidebar-container.open {
+    width: 55% !important;
+    min-width: unset !important;
+    padding: 3px !important;
+  }
+  .sidebar-title {
+    font-size: 16px !important;
+    padding-top: 10px;
+  }
+
+  .sidebar-title img {
+    width: 24px !important;
+    height: 24px !important;
+  }
+  .leaflet-control-zoom {
+    top: 3px !important;
+    left: -3px !important;
+  }
+
+  .leaflet-control-zoom-in,
+  .leaflet-control-zoom-out {
+    width: 28px !important;
+    height: 28px !important;
+    font-size: 16px !important;
+  }
+  .radar-container {
+    height: auto !important;
+    padding: 50px;
+  }
+
+  .radar-chart-wrapper {
+    height: 235px !important;
+    width: 300px;
+  }
+
+  .radar-button-wrapper {
+    margin-top: 12px;
+    text-align: center;
+  }
+
+  .radar-button {
+    font-size: 10px;
+    padding: 7px 14px;
+    border-radius: 6px;
+  }
+
+  .radar-modal {
+    width: 90%;
+    max-height: 80vh;
+    overflow-y: auto;
+    padding: 20px;
+    font-size: 13px;
+  }
+
+  .radar-modal-title {
+    font-size: 15px;
+    margin-bottom: 14px;
+  }
+
+  .radar-status-item {
+    font-size: 12px;
+    margin-bottom: 6px;
+  }
+
+  .radar-close-button {
+    padding: 8px 14px;
+    font-size: 13px;
+    border-radius: 6px;
+  }
+
+  .bar-chart-container {
+    width: 110%;
+    padding-right: 10px;
+  }
+
+  .bar-chart-legend {
+    flex-direction: column;
+    gap: 0rem;
+    align-items: flex-start;
+    margin-bottom: 0.5rem;
+    font-size: 10px;
+  }
+
+  .bar-chart-legend-item {
+    gap: 5px;
+  }
+
+  .bar-chart-color-box {
+    width: 10px;
+    height: 10px;
+    border-radius: 4px;
+  }
+
+  .download-button {
+    width: 80%;
+    max-width: 200px;
+    font-size: 11px;
+    padding: 9px 30px;
+    margin-bottom: 30px;
+  }
+
+  .help-button {
+    width: 40%;
+    font-size: 11px;
+    padding: 7px 12px;
+    bottom: 10px;
+    right: 10px;
+  }
+
+  .checkbox-container {
+    font-size: 7px;
+    top: 10px !important;
+    right: 7px !important;
+    width: 75%;
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+  }
+
+  .checkbox-container label {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    white-space: nowrap;
+  }
+
+  .dropdown-select {
+    font-size: 11px;
+    padding: 9px 12px;
+    border-radius: 6px;
+    margin-bottom: 14px !important;
+    width: 99% !important;
+    max-width: 100% !important;
+  }
+
+  .leaflet-control-geosearch {
+    width: 95% !important;
+    max-width: 100% !important;
+    top: 90px !important;
+    left: 0spx !important;
+  }
+}
+
+@media (max-width: 426px) {
+  .sidebar-container.open {
+    width: 55% !important;
+    min-width: unset !important;
+    padding: 3px !important;
+  }
+
+  .leaflet-control-zoom {
+    top: 3px !important;
+    left: -3px !important;
+  }
+
+  .leaflet-control-zoom-in,
+  .leaflet-control-zoom-out {
+    width: 28px !important;
+    height: 28px !important;
+    font-size: 16px !important;
+  }
+
+  .radar-container {
+    height: auto !important;
+    padding: 6px;
+  }
+
+  .radar-chart-wrapper {
+    height: 330px !important;
+    width: 253px;
+  }
+
+  .radar-button-wrapper {
+    margin-top: 10px;
+    text-align: center;
+  }
+
+  .radar-button {
+    font-size: 9px;
+    padding: 6px 12px;
+    border-radius: 6px;
+  }
+
+  .radar-modal {
+    width: 92%;
+    max-height: 80vh;
+    overflow-y: auto;
+    padding: 18px;
+    font-size: 12px;
+  }
+
+  .radar-modal-title {
+    font-size: 14px;
+    margin-bottom: 12px;
+  }
+
+  .radar-status-item {
+    font-size: 11px;
+    margin-bottom: 6px;
+  }
+
+  .radar-close-button {
+    padding: 7px 12px;
+    font-size: 12px;
+    border-radius: 5px;
+  }
+
+  .bar-chart-container {
+    width: 115%;
+    padding-right: 12px;
+  }
+
+  .bar-chart-legend {
+    flex-direction: column;
+    gap: 0rem;
+    align-items: flex-start;
+    margin-bottom: 0.5rem;
+    font-size: 9px;
+  }
+
+  .bar-chart-legend-item {
+    gap: 4px;
+  }
+
+  .bar-chart-color-box {
+    width: 9px;
+    height: 9px;
+    border-radius: 3px;
+  }
+
+  .download-button {
+    width: 75%;
+    max-width: 180px;
+    font-size: 10px;
+    padding: 8px 25px;
+  }
+
+  .help-button {
+    width: 40%;
+    font-size: 10px;
+    padding: 6px 8px;
+    bottom: 10px;
+    right: 10px;
+  }
+
+  .checkbox-container {
+    font-size: 7px;
+    top: 10px !important;
+    right: 7px !important;
+    width: 70%;
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+  }
+
+  .checkbox-container label {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    white-space: nowrap;
+  }
+
+  .dropdown-select {
+    font-size: 9px;
+    padding: 8px 11px;
+    border-radius: 6px;
+    margin-bottom: 12px !important;
+    width: 95% !important;
+    max-width: 100% !important;
+  }
+
+  .leaflet-control-geosearch {
+    width: 95% !important;
+    max-width: 100% !important;
+    top: 90px !important;
+    left: 0 !important;
+  }
+}
+
+@media (max-width: 376px) {
+  .sidebar-container.open {
+    width: 60% !important;
+    min-width: unset !important;
+    padding: 2px !important;
+  }
+
+  .sidebar-title {
+    font-size: 16px !important;
+    padding-top: 10px;
+  }
+
+  .sidebar-title img {
+    width: 24px !important;
+    height: 24px !important;
+  }
+
+  .leaflet-control-zoom {
+    top: 2px !important;
+    left: -4px !important;
+  }
+
+  .leaflet-control-zoom-in,
+  .leaflet-control-zoom-out {
+    width: 26px !important;
+    height: 26px !important;
+    font-size: 15px !important;
+  }
+
+  .radar-container {
+    height: auto !important;
+    padding: 20px;
+  }
+
+  .radar-chart-wrapper {
+    height: 320px !important;
+    width: 240px;
+  }
+
+  .radar-button-wrapper {
+    margin-top: 8px;
+    text-align: center;
+  }
+
+  .radar-button {
+    font-size: 9px;
+    padding: 5px 9px;
+    border-radius: 6px;
+  }
+
+  .radar-modal {
+    width: 93%;
+    max-height: 80vh;
+    overflow-y: auto;
+    padding: 16px;
+    font-size: 11px;
+  }
+
+  .radar-modal-title {
+    font-size: 13px;
+    margin-bottom: 10px;
+  }
+
+  .radar-status-item {
+    font-size: 10px;
+    margin-bottom: 5px;
+  }
+
+  .radar-close-button {
+    padding: 6px 11px;
+    font-size: 11px;
+    border-radius: 5px;
+  }
+
+  .bar-chart-container {
+    width: 120%;
+    padding-right: 14px;
+  }
+
+  .bar-chart-legend {
+    flex-direction: column;
+    gap: 0rem;
+    align-items: flex-start;
+    margin-bottom: 0.4rem;
+    font-size: 8.5px;
+  }
+
+  .bar-chart-legend-item {
+    gap: 1px;
+  }
+
+  .bar-chart-color-box {
+    width: 8px;
+    height: 8px;
+    border-radius: 3px;
+  }
+
+  .download-button {
+    width: 70%;
+    max-width: 170px;
+    font-size: 9.5px;
+    padding: 7px 25px;
+  }
+
+  .help-button {
+    width: 40%;
+    font-size: 10px;
+    padding: 6px 7px;
+    bottom: 10px;
+    right: 10px;
+  }
+
+  .checkbox-container {
+    font-size: 6px;
+    top: 10px !important;
+    right: 7px !important;
+    width: 70%;
+    display: flex;
+    flex-direction: column;
+    gap: 1px;
+  }
+
+  .checkbox-container label {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    white-space: nowrap;
+  }
+  .dropdown-select {
+    font-size: 9px;
+    padding: 7px 10px;
+    border-radius: 6px;
+    margin-bottom: 10px !important;
+    width: 93% !important;
+    max-width: 100% !important;
+  }
+
+  .leaflet-control-geosearch {
+    width: 95% !important;
+    max-width: 100% !important;
+    top: 85px !important;
+    left: 0 !important;
+  }
+}
+
+@media (max-width: 320px) {
+  .sidebar-container.open {
+    width: 60% !important;
+    min-width: unset !important;
+    padding: 2px !important;
+  }
+
+  .sidebar-title {
+    font-size: 13px !important;
+    padding-top: 8px;
+  }
+
+  .sidebar-title img {
+    width: 21px !important;
+    height: 21px !important;
+  }
+
+  .leaflet-control-zoom {
+    top: 2px !important;
+    left: -5px !important;
+  }
+
+  .leaflet-control-zoom-in,
+  .leaflet-control-zoom-out {
+    width: 24px !important;
+    height: 24px !important;
+    font-size: 14px !important;
+  }
+
+  .radar-container {
+    height: auto !important;
+    padding: 16px;
+  }
+
+  .radar-chart-wrapper {
+    height: 300px !important;
+    width: 200px;
+  }
+
+  .radar-button-wrapper {
+    margin-top: 6px;
+    text-align: center;
+  }
+
+  .radar-button {
+    font-size: 8.5px;
+    padding: 4px 8px;
+    border-radius: 5px;
+  }
+
+  .radar-modal {
+    width: 94%;
+    max-height: 80vh;
+    overflow-y: auto;
+    padding: 14px;
+    font-size: 10.5px;
+  }
+
+  .radar-modal-title {
+    font-size: 12.5px;
+    margin-bottom: 8px;
+  }
+
+  .radar-status-item {
+    font-size: 9.5px;
+    margin-bottom: 4px;
+  }
+
+  .radar-close-button {
+    padding: 6px 10px;
+    font-size: 10px;
+    border-radius: 4.5px;
+  }
+
+  .bar-chart-container {
+    width: 125%;
+    padding-right: 16px;
+  }
+
+  .bar-chart-legend {
+    flex-direction: column;
+    gap: 0;
+    align-items: flex-start;
+    margin-bottom: 0.3rem;
+    font-size: 8px;
+  }
+
+  .bar-chart-legend-item {
+    gap: 1px;
+  }
+
+  .bar-chart-color-box {
+    width: 7px;
+    height: 7px;
+    border-radius: 2.5px;
+  }
+
+  .download-button {
+    width: 68%;
+    max-width: 160px;
+    font-size: 9px;
+    padding: 7px 20px;
+  }
+
+  .help-button {
+    width: 50%;
+    font-size: 9px;
+    padding: 5px 13px;
+    bottom: 10px;
+    right: 10px;
+  }
+
+  .checkbox-container {
+    font-size: 6px;
+    top: 10px !important;
+    right: 7px !important;
+    width: 70%;
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+  }
+
+  .checkbox-container label {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    white-space: nowrap;
+  }
+
+  .checkbox-container input[type="checkbox"] {
+    width: 8px;
+    height: 8px;
+  }
+
+  .dropdown-select {
+    font-size: 7px;
+    padding: 6px 9px;
+    border-radius: 6px;
+    margin-bottom: 10px !important;
+    width: 91% !important;
+    max-width: 100% !important;
+  }
+
+  .leaflet-control-geosearch {
+    width: 94% !important;
+    max-width: 100% !important;
+    top: 75px !important;
+    left: 0 !important;
   }
 }

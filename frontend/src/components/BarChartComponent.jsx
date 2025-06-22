@@ -9,7 +9,6 @@ import {
   ResponsiveContainer,
 } from "recharts";
 
-// Custom legend component
 const CustomLegend = ({ showThreshold }) => (
   <div className="bar-chart-legend">
     <span className="bar-chart-legend-item">
@@ -43,10 +42,10 @@ const BarChartComponent = ({
 }) => {
   const chartData = parameters.map((param) => {
     const label = param.label;
-    const actualValue = dataSource.aktual?.[param.field] || 0;
+    const actualValue = Number(dataSource.aktual?.[param.field]) || 0;
     const thresholdValue =
       showThreshold && param.thresholdField
-        ? dataSource.rata_rata?.[param.thresholdField] || 0
+        ? Number(dataSource.rata_rata?.[param.thresholdField]) || 0
         : null;
 
     return {
@@ -60,6 +59,11 @@ const BarChartComponent = ({
   const yAxisLabel = isGroupJiwa ? "Jiwa" : "Persentase (%)";
   const yAxisSuffix = isGroupJiwa ? " jiwa" : " %";
 
+  const maxValue = Math.max(
+    ...chartData.map((item) => Math.max(item.actual, item.threshold ?? 0))
+  );
+  const yAxisMax = Math.ceil(maxValue * 1.1);
+
   return (
     <div className="bar-chart-container">
       <CustomLegend showThreshold={showThreshold} />
@@ -67,7 +71,7 @@ const BarChartComponent = ({
       <ResponsiveContainer width="100%" height={480}>
         <BarChart
           data={chartData}
-          margin={{ top: 0, right: 20, left: -20, bottom: 110 }}
+          margin={{ top: 0, right: 10, left: -19, bottom: 107 }}
         >
           <defs>
             <linearGradient id="greenGradient" x1="0" y1="1" x2="0" y2="0">
@@ -96,6 +100,7 @@ const BarChartComponent = ({
             }}
           />
           <YAxis
+            domain={[0, yAxisMax]}
             tick={{
               style: {
                 fontSize: 12,
@@ -107,7 +112,7 @@ const BarChartComponent = ({
               value: yAxisLabel,
               position: "outsideLeft",
               offset: 10,
-              dx: -6,
+              dx: -7,
               angle: -90,
               style: {
                 fontSize: 12,
@@ -119,22 +124,29 @@ const BarChartComponent = ({
           <Tooltip
             content={({ active, payload, label }) => {
               if (active && payload && payload.length) {
-                const actual =
-                  payload.find((p) => p.dataKey === "actual")?.value ?? 0;
-                const threshold =
-                  payload.find((p) => p.dataKey === "threshold")?.value ?? null;
+                const item = payload[0].payload;
+                const actual = item.actual;
+                const threshold = item.threshold;
 
                 const suffix = isGroupJiwa ? " jiwa" : " %";
-                const formattedActual = `${actual.toLocaleString("id-ID", {
-                  minimumFractionDigits: 2,
-                  maximumFractionDigits: 2,
+                const formattedActual = `${actual.toLocaleString("id", {
+                  minimumFractionDigits: isGroupJiwa ? 0 : 2,
+                  maximumFractionDigits: isGroupJiwa ? 0 : 2,
                 })}${suffix}`;
 
+                const formattedThreshold =
+                  threshold !== null && threshold !== undefined
+                    ? `${threshold.toLocaleString("id", {
+                        minimumFractionDigits: isGroupJiwa ? 0 : 2,
+                        maximumFractionDigits: isGroupJiwa ? 0 : 2,
+                      })}${suffix}`
+                    : null;
+
                 const status =
-                  threshold !== null
+                  threshold !== null && threshold !== undefined
                     ? actual > threshold
                       ? "Melampaui Rata-rata"
-                      : "Tidak Melampaui"
+                      : "Tidak Melampaui Rata-rata"
                     : null;
 
                 return (
@@ -142,10 +154,11 @@ const BarChartComponent = ({
                     <div>
                       <strong>{label}</strong>
                     </div>
-                    <div>
-                      Nilai Aktual: {formattedActual}
-                      {status && ` (${status})`}
-                    </div>
+                    <div>Nilai Aktual: {formattedActual}</div>
+                    {formattedThreshold && (
+                      <div>Rata-rata: {formattedThreshold}</div>
+                    )}
+                    {status && <div>Status: {status}</div>}
                   </div>
                 );
               }

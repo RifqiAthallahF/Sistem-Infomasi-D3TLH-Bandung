@@ -8,14 +8,14 @@ import "bootstrap/dist/css/bootstrap.min.css";
 
 function App() {
   return (
-    <>
+    <div className="scale-wrapper">
       <Navbar />
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/webgis" element={<Webgis />} />
       </Routes>
       <Footer />
-    </>
+    </div>
   );
 }
 

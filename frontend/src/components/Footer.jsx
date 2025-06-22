@@ -3,14 +3,10 @@ import "../styles/Footer.css";
 function Footer() {
   return (
     <footer className="footer-custom">
-      {/* Bagian Atas */}
       <div className="footer-top">
-        {/* Kolom Kiri: Logo + Teks ITB + Alamat */}
         <div className="footer-left">
-          {/* Logo dan Teks ITB */}
           <div className="footer-logos-itb">
             <div className="footer-logos">
-              {/* Logo ITB + Teks */}
               <div className="logo-itb-group">
                 <img
                   src="/itb.png"
@@ -23,7 +19,6 @@ function Footer() {
                 </div>
               </div>
 
-              {/* Logo DLHK dan Bandung */}
               <img
                 src="/dlhk.png"
                 alt="Logo DLHK"
@@ -37,7 +32,6 @@ function Footer() {
             </div>
           </div>
 
-          {/* Alamat di bawah logo */}
           <div className="footer-address">
             <h4>
               <img
@@ -55,7 +49,6 @@ function Footer() {
           </div>
         </div>
 
-        {/* Kolom Tengah: Kontak */}
         <div className="footer-contact">
           <h4>
             <img
@@ -97,7 +90,6 @@ function Footer() {
           </p>
         </div>
 
-        {/* Kolom Kanan: Sosial Media */}
         <div className="footer-socials-wrapper">
           <h4>
             <img
@@ -151,7 +143,6 @@ function Footer() {
 
       <hr className="footer-divider" />
 
-      {/* Bagian Bawah */}
       <div className="footer-bottom">
         <div className="footer-info-center">
           <p>

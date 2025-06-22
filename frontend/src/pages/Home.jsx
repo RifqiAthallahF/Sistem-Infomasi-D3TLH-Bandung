@@ -1,13 +1,44 @@
 import { useEffect, useState } from "react";
+import CountUp from "react-countup";
+import { useInView } from "react-intersection-observer";
+import Typewriter from "typewriter-effect";
 import "../styles/Home.css";
-import { useRef } from "react";
 
 function Home() {
   const [isVisible, setIsVisible] = useState(false);
+  const [showTentangKami, setShowTentangKami] = useState(false);
+  const [currentImageIndex, setCurrentImageIndex] = useState(0);
+  const [showTypewriterDDLH, setShowTypewriterDDLH] = useState(false);
+  const [showTypewriterSID3TLH, setShowTypewriterSID3TLH] = useState(false);
+  const [isTypewriterFinishedDDLH, setIsTypewriterFinishedDDLH] =
+    useState(false);
+  const [isTypewriterFinishedSID3TLH, setIsTypewriterFinishedSID3TLH] =
+    useState(false);
+
+  const imageList = ["/gdsate.png", "/bdg2.png", "/bdg3.png"];
+  useEffect(() => {
+    const interval = setInterval(() => {
+      setCurrentImageIndex((prevIndex) => (prevIndex + 1) % imageList.length);
+    }, 3000);
+
+    return () => clearInterval(interval);
+  }, []);
 
   useEffect(() => {
-    // Trigger fade-in effect after mount
     setIsVisible(true);
+
+    const ddlhTimer = setTimeout(() => {
+      setShowTypewriterDDLH(true);
+    }, 1000);
+
+    const sid3tlhTimer = setTimeout(() => {
+      setShowTypewriterSID3TLH(true);
+    }, 2800); // sesuai waktu selesai DDLH
+
+    return () => {
+      clearTimeout(ddlhTimer);
+      clearTimeout(sid3tlhTimer);
+    };
   }, []);
 
   useEffect(() => {
@@ -41,7 +72,6 @@ function Home() {
           transition: "opacity 1s ease-out, transform 1s ease-out",
         }}
       >
-        {/* Home Section */}
         <section id="home">
           <div
             className="kolom"
@@ -60,14 +90,139 @@ function Home() {
               }}
             >
               <div
-                className="DDLH"
+                className="text-container"
                 style={{
-                  transition: "all 0.5s ease-in-out",
-                  transform: isVisible ? "scale(1)" : "scale(0.95)",
+                  display: "flex",
+                  flexDirection: "column",
                 }}
               >
-                DAYA DUKUNG DAN DAYA TAMPUNG LINGKUNGAN HIDUP KOTA BANDUNG
+                <div
+                  className="DDLH"
+                  style={{
+                    position: "relative",
+                    transition: "all 0.5s ease-in-out",
+                    transform: isVisible ? "scale(1)" : "scale(0.95)",
+                    opacity: isVisible ? 1 : 0,
+                  }}
+                >
+                  {/* Dummy tinggi */}
+                  <div style={{ opacity: 0 }}>Wilujeng Sumping!</div>
+
+                  {/* Tampilkan teks statis jika ketik sudah selesai */}
+                  {isTypewriterFinishedDDLH ? (
+                    <div
+                      style={{
+                        position: "absolute",
+                        top: 0,
+                        left: 0,
+                        width: "100%",
+                      }}
+                    >
+                      Wilujeng Sumping!
+                    </div>
+                  ) : (
+                    showTypewriterDDLH && (
+                      <div
+                        className="typewriter-wrapper"
+                        style={{
+                          position: "absolute",
+                          top: 0,
+                          left: 0,
+                          width: "100%",
+                          opacity: isVisible ? 1 : 0,
+                          transform: isVisible
+                            ? "translateY(0px)"
+                            : "translateY(20px)",
+                          transition:
+                            "opacity 1s ease-out, transform 1s ease-out",
+                        }}
+                      >
+                        <Typewriter
+                          options={{
+                            autoStart: true,
+                            loop: false,
+                            delay: 60,
+                          }}
+                          onInit={(typewriter) => {
+                            typewriter
+                              .typeString("Wilujeng Sumping!")
+                              .callFunction(() => {
+                                setIsTypewriterFinishedDDLH(true);
+                              })
+                              .start();
+                          }}
+                        />
+                      </div>
+                    )
+                  )}
+                </div>
+
+                <div
+                  className="SID3TLH"
+                  style={{
+                    position: "relative",
+                    transition: "all 0.5s ease-in-out",
+                    transform: isVisible ? "scale(1)" : "scale(0.95)",
+                    opacity: isVisible ? 1 : 0,
+                  }}
+                >
+                  <div style={{ opacity: 0 }}>
+                    Di Sistem Informasi Daya Dukung dan Daya Tampung Lingkungan
+                    Hidup Kota Bandung
+                  </div>
+
+                  {isTypewriterFinishedSID3TLH ? (
+                    <div
+                      style={{
+                        position: "absolute",
+                        top: 0,
+                        left: 0,
+                        width: "100%",
+                      }}
+                    >
+                      Di Sistem Informasi Daya Dukung dan Daya Tampung
+                      Lingkungan Hidup Kota Bandung
+                    </div>
+                  ) : (
+                    showTypewriterSID3TLH && (
+                      <div
+                        className="typewriter-wrapper"
+                        style={{
+                          position: "absolute",
+                          top: 0,
+                          left: 0,
+                          width: "100%",
+                          opacity: isVisible ? 1 : 0,
+                          transform: isVisible
+                            ? "translateY(0px)"
+                            : "translateY(20px)",
+                          transition:
+                            "opacity 1s ease-out, transform 1s ease-out",
+                        }}
+                      >
+                        <Typewriter
+                          options={{
+                            autoStart: true,
+                            loop: false,
+                            delay: 20,
+                          }}
+                          onInit={(typewriter) => {
+                            typewriter
+                              .typeString(
+                                "Di Sistem Informasi Daya Dukung dan Daya Tampung Lingkungan Hidup Kota Bandung"
+                              )
+                              .callFunction(() => {
+                                setIsTypewriterFinishedSID3TLH(true);
+                              })
+                              .start();
+                          }}
+                        />
+                      </div>
+                    )
+                  )}
+                </div>
               </div>
+
               <div className="icon-container">
                 <img
                   src="/Rectangle 2.png"
@@ -78,18 +233,20 @@ function Home() {
                   }}
                 />
                 <img
-                  src="/gdsate.png"
-                  alt="Gedung Sate"
+                  src={imageList[currentImageIndex]}
+                  alt="Gedung"
                   className="icon"
                   style={{
-                    transition: "transform 0.3s ease",
+                    transition: "transform 0.4s ease, filter 0.4s ease",
                   }}
-                  onMouseEnter={(e) =>
-                    (e.currentTarget.style.transform = "scale(1.05)")
-                  }
-                  onMouseLeave={(e) =>
-                    (e.currentTarget.style.transform = "scale(1)")
-                  }
+                  onMouseEnter={(e) => {
+                    e.currentTarget.style.transform = "scale(1.05)";
+                    e.currentTarget.style.filter = "brightness(1.1)";
+                  }}
+                  onMouseLeave={(e) => {
+                    e.currentTarget.style.transform = "scale(1)";
+                    e.currentTarget.style.filter = "brightness(1)";
+                  }}
                 />
               </div>
             </div>
@@ -103,12 +260,14 @@ function Home() {
               }}
             >
               <p>
-                Kota Bandung adalah Ibu Kota Provinsi Jawa Barat yang terletak
-                di Kawasan Cekungan Bandung. Secara astronomis, Kota Bandung
-                terletak pada 6°41'LU - 7°19'LS dan 107°22'BT - 108°5'BT dengan
-                rata-rata ketinggian 110 Mdpl hingga 2.2429 Mdpl. Kota Bandung
-                secara keseluruhan tercakup dalam Ekoregion Komplek Pegunungan
-                Vulkanik Gunung Halimun - Gunung Salak - Gunung Sawal.
+                Daya Dukung dan Daya Tampung Lingkungan Hidup merupakan dasar
+                penting dalam pembangunan berkelanjutan. Dengan memahami
+                kapasitas penyediaan sumber daya alam dan kemampuan lingkungan
+                dalam menerima berbagai zat atau tekanan, pemanfaatan ruang
+                dapat diarahkan secara bijak agar tidak melebihi batas kemampuan
+                lingkungan. Pendekatan ini penting untuk menjaga keberlanjutan
+                fungsi lingkungan hidup dan mendukung peningkatan kualitas hidup
+                masyarakat.
               </p>
             </div>
 
@@ -146,6 +305,15 @@ function Home() {
                     src="/1.png"
                     alt="1"
                     className="gambard3tlh"
+                    style={{
+                      transition: "transform 0.5s ease-in-out",
+                      transform: isVisible ? "scale(1)" : "scale(0.95)",
+                    }}
+                  />
+                  <img
+                    src="/2.png"
+                    alt="2"
+                    className="gambard3tlh2"
                     style={{
                       transition: "transform 0.5s ease-in-out",
                       transform: isVisible ? "scale(1)" : "scale(0.95)",
@@ -226,92 +394,200 @@ function Home() {
               </div>
             </div>
 
-            <div
-              className="group-60"
-              style={{
-                opacity: isVisible ? 1 : 0,
-                transform: isVisible ? "translateY(0px)" : "translateY(40px)",
-                transition: "opacity 1s ease-out, transform 1s ease-out",
-              }}
-            >
-              <div className="TentangKami">
-                <div className="judultentangkami">
-                  <img src="/atas.svg" alt="atas" className="atas3" />
-                  <h2 className="judul-text3">Tentang Kami</h2>
-                  <img src="/bawah.svg" alt="bawah" className="bawah3" />
-                </div>
-                <div className="isitentangkami">
-                  <img src="/Si Akang.svg" alt="logoo" className="TS" />
-                </div>
-                <div className="isitentangkami2">
-                  <span>
-                    <span className="TS1">SI AKANG adalah</span>
-                    <span className="TS2">platform</span>
-                    <span className="TS3">
-                      yang menampilkan data mengenai kondisi Daya Dukung dan
-                      Daya Tampung Lingkungan Hidup di Kota Bandung. SI AKANG
-                      diharapkan dapat digunakan oleh berbagai pihak dalam
-                      pembuatan kebijakan dan pengambilan keputusan.
-                    </span>
-                  </span>
-                </div>
+            {!showTentangKami && (
+              <div className="tombol-container">
+                <button
+                  className="tombol-tentang-kami"
+                  onClick={() => setShowTentangKami(true)}
+                >
+                  <img
+                    src="/icons/icon-tentangkami.svg"
+                    alt="Tentang Kami"
+                    className="icon-tentangkami-svg"
+                  />
+                  Tentang Kami
+                </button>
+              </div>
+            )}
 
-                {/* Tim Penyusun tetap ada */}
-                <div className="penyusun">
-                  <h2 className="penyusun">Tim Penyusun</h2>
-                  <div className="listpenyusun">
-                    <div className="penyusun-columns">
-                      <div className="column1">
-                        <div className="penyusun-item">
-                          <span className="dot" />
-                          <span className="name-text">
-                            Dr. Akhmad Riqqi, M.Si.
-                          </span>
-                        </div>
-                        <div className="penyusun-item">
-                          <span className="dot" />
-                          <span className="name-text">
-                            Dr. Budhy Soeksmantono, S.T., M.T.
-                          </span>
-                        </div>
-                        <div className="penyusun-item">
-                          <span className="dot" />
-                          <span className="name-text">
-                            Ir. Agustinus Bambang Setyadji, M.Si., D.Sc.
-                          </span>
+            {showTentangKami && (
+              <div
+                className="group-60"
+                style={{
+                  opacity: isVisible ? 1 : 0,
+                  transform: isVisible ? "translateY(0px)" : "translateY(40px)",
+                  transition: "opacity 1s ease-out, transform 1s ease-out",
+                }}
+              >
+                <div className="TentangKami">
+                  <div className="judultentangkami">
+                    <img src="/atas.svg" alt="atas" className="atas3" />
+                    <h2 className="judul-text3">Tentang Kami</h2>
+                    <img src="/bawah.svg" alt="bawah" className="bawah3" />
+                  </div>
+                  <div className="isitentangkami">
+                    <img src="/Si Akang.svg" alt="logoo" className="TS" />
+                  </div>
+                  <div className="isitentangkami2">
+                    <span>
+                      SI AKANG adalah platform yang menampilkan data mengenai
+                      kondisi Daya Dukung dan Daya Tampung Lingkungan Hidup di
+                      Kota Bandung. SI AKANG diharapkan dapat digunakan oleh
+                      berbagai pihak dalam pembuatan kebijakan dan pengambilan
+                      keputusan. Platform ini merupakan program kerja sama
+                      antara Program Studi Teknik Geodesi dan Geomatika Institut
+                      Teknologi Bandung dengan Dinas Lingkungan Hidup Kota
+                      Bandung, sebagai bentuk kolaborasi dalam mendukung
+                      pengelolaan lingkungan berbasis data spasial.
+                    </span>
+                  </div>
+
+                  <div className="penyusun">
+                    <h2 className="Timpenyusun">
+                      <img
+                        src="/icons/icon-penyusun.svg"
+                        alt="Icon Tim Penyusun"
+                        className="iconpenyusun-svg"
+                      />
+                      Tim Penyusun
+                    </h2>
+
+                    <div className="penyusun-top-row">
+                      <div className="penyusun-item">
+                        <div className="flip-card">
+                          <div className="flip-card-inner">
+                            <div className="flip-card-front">
+                              <img src="riqqi.jpg" alt="Dr. Akhmad Riqqi" />
+                              <p className="nama-penyusun">
+                                Dr. Akhmad Riqqi, S.T., M.Si.
+                              </p>
+                            </div>
+                            <div className="flip-card-back">
+                              <p className="nama-penyusun">Supervisor</p>
+                            </div>
+                          </div>
                         </div>
                       </div>
-                      <div className="column2">
-                        <div className="penyusun-item">
-                          <span className="dot" />
-                          <span className="name-text">
-                            Farah Diba Aulia Yasmin
-                          </span>
+                      <div className="penyusun-item">
+                        <div className="flip-card">
+                          <div className="flip-card-inner">
+                            <div className="flip-card-front">
+                              <img
+                                src="budhy.jpg"
+                                alt="Dr. Budhy Soeksmantono"
+                              />
+                              <p className="nama-penyusun">
+                                Dr. Budhy Soeksmantono, S.T., M.T.
+                              </p>
+                            </div>
+                            <div className="flip-card-back">
+                              <p className="nama-penyusun">Supervisor</p>
+                            </div>
+                          </div>
                         </div>
-                        <div className="penyusun-item">
-                          <span className="dot" />
-                          <span className="name-text">
-                            Rifqi Athallah Fajar
-                          </span>
+                      </div>
+                      <div className="penyusun-item">
+                        <div className="flip-card">
+                          <div className="flip-card-inner">
+                            <div className="flip-card-front">
+                              <img
+                                src="agustinus.jpg"
+                                alt="Ir. Agustinus Bambang"
+                              />
+                              <p className="nama-penyusun">
+                                Ir. Agustinus Bambang Setyadji, M.Si., D.Sc.
+                              </p>
+                            </div>
+                            <div className="flip-card-back">
+                              <p className="nama-penyusun">Supervisor</p>
+                            </div>
+                          </div>
                         </div>
-                        <div className="penyusun-item">
-                          <span className="dot" />
-                          <span className="name-text">
-                            M. Ahnafudin Pramudito
-                          </span>
+                      </div>
+                    </div>
+
+                    <div className="penyusun-bottom-row">
+                      <div className="penyusun-item">
+                        <div className="flip-card">
+                          <div className="flip-card-inner">
+                            <div className="flip-card-front">
+                              <img
+                                src="farah.jpg"
+                                alt="Farah Diba Aulia Yasmin"
+                              />
+                              <p className="nama-penyusun">
+                                Farah Diba Aulia Yasmin
+                              </p>
+                            </div>
+                            <div className="flip-card-back">
+                              <p className="nama-penyusun">Pengembang</p>
+                            </div>
+                          </div>
                         </div>
-                        <div className="penyusun-item">
-                          <span className="dot" />
-                          <span className="name-text">
-                            Azkiya Tsabitul Azmi
-                          </span>
+                      </div>
+                      <div className="penyusun-item">
+                        <div className="flip-card">
+                          <div className="flip-card-inner">
+                            <div className="flip-card-front">
+                              <img src="rifqi.jpg" alt="Rifqi Athallah Fajar" />
+                              <p className="nama-penyusun">
+                                Rifqi Athallah Fajar
+                              </p>
+                            </div>
+                            <div className="flip-card-back">
+                              <p className="nama-penyusun">Pengembang</p>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                      <div className="penyusun-item">
+                        <div className="flip-card">
+                          <div className="flip-card-inner">
+                            <div className="flip-card-front">
+                              <img
+                                src="ahnaf.jpg"
+                                alt="M. Ahnafudin Pramudito"
+                              />
+                              <p className="nama-penyusun">
+                                M. Ahnafudin Pramudito
+                              </p>
+                            </div>
+                            <div className="flip-card-back">
+                              <p className="nama-penyusun">Pengembang</p>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                      <div className="penyusun-item">
+                        <div className="flip-card">
+                          <div className="flip-card-inner">
+                            <div className="flip-card-front">
+                              <img
+                                src="azkiya.jpg"
+                                alt="Azkiya Tsabitul Azmi"
+                              />
+                              <p className="nama-penyusun">
+                                Azkiya Tsabitul Azmi
+                              </p>
+                            </div>
+                            <div className="flip-card-back">
+                              <p className="nama-penyusun">Pengembang</p>
+                            </div>
+                          </div>
                         </div>
                       </div>
                     </div>
                   </div>
+
+                  <button
+                    onClick={() => setShowTentangKami(false)}
+                    className="tombol-tutup-tentang-kami"
+                  >
+                    X
+                  </button>
                 </div>
               </div>
-            </div>
+            )}
           </div>
         </section>
       </div>
