@@ -452,7 +452,7 @@ const MapWithChart = () => {
 
           <MapContainer
             center={[-6.9075, 107.6391]}
-            zoom={13}
+            zoom={12.5}
             style={{ flex: 1, height: "100%" }}
           >
             <TileLayer

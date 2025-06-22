@@ -282,7 +282,7 @@ body {
 }
 
 .download-button {
-  padding: 10px 19px;
+  padding: 12px 24px;
   background-color: #4e944f;
   color: white;
   border: none;
@@ -293,10 +293,15 @@ body {
   display: flex;
   align-items: center;
   gap: 8px;
-  width: 70%;
-  max-width: 201px;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
   transition: transform 0.2s ease, box-shadow 0.3s ease;
+  position: absolute;
+  bottom: 15px;
+  left: 15px;
+  z-index: 1000;
+
+  width: fit-content;
+  max-width: 250px;
 }
 
 .download-icon {
@@ -344,10 +349,6 @@ body {
   height: 18px;
 }
 
-.help-button:hover {
-  transform: scale(1.05);
-}
-
 .modal-close-button:hover {
   background-color: #3b7a3c;
 }
@@ -356,8 +357,8 @@ body {
   position: fixed;
   top: 0;
   left: 0;
-  width: 110vw;
-  height: 135.3vh;
+  width: 100%;
+  height: 100%;
   background-color: rgba(0, 0, 0, 0.4);
   display: flex;
   justify-content: center;
@@ -447,8 +448,8 @@ body {
   position: fixed;
   top: 0;
   left: 0;
-  width: 100vw;
-  height: 100vh;
+  width: 100%;
+  height: 100%;
   background-color: rgba(0, 0, 0, 0.4);
   display: flex;
   justify-content: center;
@@ -661,8 +662,9 @@ body {
   }
 
   .download-button {
-    width: 75%;
+    width: 35%;
     font-size: 14px;
+    padding: 8px 17px;
   }
 
   .leaflet-control-geosearch {
@@ -695,8 +697,9 @@ body {
   }
 
   .download-button {
-    width: 80%;
-    font-size: 13px;
+    width: 40%;
+    font-size: 14px;
+    padding: 8px 17px;
   }
 
   .help-button {
@@ -736,8 +739,9 @@ body {
   }
 
   .download-button {
-    width: 85%;
-    font-size: 13px;
+    width: 45%;
+    font-size: 14px;
+    padding: 8px 14px;
   }
 
   .help-button {
@@ -864,7 +868,8 @@ body {
     width: 85%;
     max-width: 200px;
     font-size: 13px;
-    padding: 10px 25px;
+    padding: 8px 25px;
+    bottom: 11px;
   }
 
   .help-button {
@@ -1041,13 +1046,13 @@ body {
   .download-button {
     width: 80%;
     font-size: 12px;
-    padding: 10px 30px;
+    padding: 8px 30px;
   }
 
   .help-button {
     width: 33%;
     font-size: 12px;
-    padding: 8px 10px;
+    padding: 8px 16px;
   }
 
   .checkbox-container {
@@ -1128,6 +1133,7 @@ body {
   .help-button {
     width: 30%;
     font-size: 11px;
+    padding-left: 10px;
   }
 
   .checkbox-container {
@@ -1192,15 +1198,15 @@ body {
   }
 
   .download-button {
-    width: 90%;
+    width: 40%;
     font-size: 11px;
-    padding: 9px 31px;
+    padding-left: 24px;
   }
 
   .help-button {
     width: 35%;
     font-size: 11px;
-    padding: 7px 17px;
+    padding: 7px 14px;
   }
 
   .checkbox-container {
@@ -1327,11 +1333,9 @@ body {
   }
 
   .download-button {
-    width: 80%;
-    max-width: 200px;
+    width: 40%;
     font-size: 11px;
-    padding: 9px 30px;
-    margin-bottom: 30px;
+    padding-left: 17px;
   }
 
   .help-button {
@@ -1339,7 +1343,7 @@ body {
     font-size: 11px;
     padding: 7px 14px;
     bottom: 10px;
-    right: 10px;
+    right: 11px;
   }
 
   .checkbox-container {
@@ -1471,11 +1475,9 @@ body {
   }
 
   .download-button {
-    width: 80%;
-    max-width: 200px;
+    width: 40%;
     font-size: 11px;
-    padding: 9px 30px;
-    margin-bottom: 30px;
+    padding-left: 17px;
   }
 
   .help-button {
@@ -1608,10 +1610,9 @@ body {
   }
 
   .download-button {
-    width: 75%;
-    max-width: 180px;
-    font-size: 10px;
-    padding: 8px 25px;
+    width: 45%;
+    font-size: 11px;
+    padding-left: 17px;
   }
 
   .help-button {
@@ -1754,10 +1755,9 @@ body {
   }
 
   .download-button {
-    width: 70%;
-    max-width: 170px;
-    font-size: 9.5px;
-    padding: 7px 25px;
+    width: 40%;
+    font-size: 10px;
+    padding-left: 12px;
   }
 
   .help-button {
@@ -1899,16 +1899,15 @@ body {
   }
 
   .download-button {
-    width: 68%;
-    max-width: 160px;
+    width: 40%;
     font-size: 9px;
-    padding: 7px 20px;
+    padding-left: 7px;
   }
 
   .help-button {
-    width: 50%;
+    width: 40%;
     font-size: 9px;
-    padding: 5px 13px;
+    padding: 5px 4px;
     bottom: 10px;
     right: 10px;
   }

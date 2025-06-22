@@ -15,7 +15,7 @@ body {
   transform: scale(0.95);
   transform-origin: top left;
   width: 105.3%;
-  height: 105.3vh;
+  height: 100%;
 }
 .scale-wrapper {
   transform: scale(0.95);
