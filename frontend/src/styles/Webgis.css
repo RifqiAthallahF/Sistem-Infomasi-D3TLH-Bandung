@@ -31,7 +31,7 @@ body {
 
 .chart-wrapper {
   width: 100%;
-  max-width: 90%;
+  max-width: 92%;
   height: auto;
   aspect-ratio: 1 / 1;
   background: #f9f9f9;
@@ -84,7 +84,7 @@ body {
   display: flex;
   justify-content: center;
   width: 100%;
-  margin-top: -10px;
+  margin-top: 0px;
 }
 
 .radar-button,

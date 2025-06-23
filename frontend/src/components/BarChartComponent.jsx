@@ -88,7 +88,7 @@ const BarChartComponent = ({
           <CartesianGrid strokeDasharray="3 3" stroke="#e0e0e0" />
           <XAxis
             dataKey="label"
-            angle={-45}
+            angle={0}
             textAnchor="end"
             interval={0}
             tick={{
