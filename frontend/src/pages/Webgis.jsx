@@ -899,40 +899,64 @@ const MapWithChart = () => {
               {activeTab === "sumber" && (
                 <ul className="sumber-list">
                   <li>
-                    <strong>Kerentanan Bencana :</strong> InaRisk 2021 - Badan
-                    Nasional Penanggulangan Bencana (BNPB)
+                    <strong>Data Penduduk:</strong> Kajian Lingkungan Hidup
+                    Strategis (KLHS) RTRW Kota Bandung 2022-2042 - Badan
+                    Perencanaan Pembangunan Nasional (Bappenas). Data Tahun 2021
                   </li>
                   <li>
-                    <strong>Efisiensi Sumber Daya Alam :</strong> Kajian
+                    <strong>Data Potensi Beban Pencemar:</strong> Kajian
                     Lingkungan Hidup Strategis (KLHS) RTRW Kota Bandung
                     2022-2042 - Badan Perencanaan Pembangunan Nasional
-                    (Bappenas)
+                    (Bappenas). Data Tahun 2021
                   </li>
                   <li>
-                    <strong>Potensi Beban Pencemar dan Timbulan :</strong>{" "}
-                    Kajian Lingkungan Hidup Strategis (KLHS) RTRW Kota Bandung
+                    <strong>Data Potensi Timbulan Sampah:</strong> Kajian
+                    Lingkungan Hidup Strategis (KLHS) RTRW Kota Bandung
                     2022-2042 - Badan Perencanaan Pembangunan Nasional
-                    (Bappenas)
+                    (Bappenas). Data Tahun 2021
                   </li>
                   <li>
-                    <strong>Indeks Jasa Ekosistem :</strong> Kajian Lingkungan
-                    Hidup Strategis (KLHS) RTRW Kota Bandung 2022-2042 - Badan
-                    Perencanaan Pembangunan Nasional (Bappenas)
+                    <strong>Data Potensi Timbulan Tinja:</strong> Kajian
+                    Lingkungan Hidup Strategis (KLHS) RTRW Kota Bandung
+                    2022-2042 - Badan Perencanaan Pembangunan Nasional
+                    (Bappenas). Data Tahun 2021
                   </li>
                   <li>
-                    <strong>Jumlah Penduduk :</strong> Kajian Lingkungan Hidup
+                    <strong>Data DDLH Pangan:</strong> Kajian Lingkungan Hidup
                     Strategis (KLHS) RTRW Kota Bandung 2022-2042 - Badan
-                    Perencanaan Pembangunan Nasional (Bappenas)
+                    Perencanaan Pembangunan Nasional (Bappenas). Data Tahun 2023
+                  </li>
+                  <li>
+                    <strong>Data DDLH Air:</strong> Kajian Lingkungan Hidup
+                    Strategis (KLHS) RTRW Kota Bandung 2022-2042 - Badan
+                    Perencanaan Pembangunan Nasional (Bappenas). Data Tahun 2023
+                  </li>
+                  <li>
+                    <strong>Indeks Jasa Ekosistem:</strong> Kajian Lingkungan
+                    Hidup Strategis (KLHS) RTRW Kota Bandung 2022-2042 - Badan
+                    Perencanaan Pembangunan Nasional (Bappenas). Data Tahun 2023
+                  </li>
+                  <li>
+                    <strong>Efisiensi Sumber Daya Alam:</strong> Kajian
+                    Lingkungan Hidup Strategis (KLHS) RTRW Kota Bandung
+                    2022-2042 - Badan Perencanaan Pembangunan Nasional
+                    (Bappenas). Data Tahun 2023
+                  </li>
+                  <li>
+                    <strong>Indeks Kerentanan Bencana:</strong> InaRisk 2021 -
+                    Badan Nasional Penanggulangan Bencana (BNPB). Data Tahun
+                    2021
                   </li>
                   <li>
                     <strong>
-                      Data Jaringan (Air Minum, Drainase, dan Limbah) :
+                      Data Saluran Air Minum, Air Limbah, dan Drainase:
                     </strong>{" "}
-                    Dinas Lingkungan Hidup dan Kebersihan (DLHK) Kota Bandung
+                    Dinas Lingkungan Hidup dan Kebersihan Kota Bandung. Data
+                    Tahun 2023
                   </li>
                   <li>
-                    <strong>Pola Ruang :</strong> Kementerian Agraria dan Tata
-                    Ruang/Badan Pertanahan Nasional (ATR/BPN)
+                    <strong>Pola Ruang:</strong> Kementerian Agraria dan Tata
+                    Ruang/Badan Pertanahan Nasional (ATR/BPN). Data Tahun 2023
                   </li>
                 </ul>
               )}
