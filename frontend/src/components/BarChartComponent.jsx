@@ -68,10 +68,10 @@ const BarChartComponent = ({
     <div className="bar-chart-container">
       <CustomLegend showThreshold={showThreshold} />
 
-      <ResponsiveContainer width="100%" height={480}>
+      <ResponsiveContainer width="100%" height="100%">
         <BarChart
           data={chartData}
-          margin={{ top: 0, right: 10, left: -19, bottom: 107 }}
+          margin={{ top: 0, right: 10, left: -19, bottom: 0 }}
         >
           <defs>
             <linearGradient id="greenGradient" x1="0" y1="1" x2="0" y2="0">
