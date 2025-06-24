@@ -105,10 +105,8 @@ function Home() {
                     opacity: isVisible ? 1 : 0,
                   }}
                 >
-                  {/* Dummy tinggi */}
                   <div style={{ opacity: 0 }}>Wilujeng Sumping!</div>
 
-                  {/* Tampilkan teks statis jika ketik sudah selesai */}
                   {isTypewriterFinishedDDLH ? (
                     <div
                       style={{

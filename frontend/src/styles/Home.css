@@ -4196,10 +4196,10 @@ p {
     margin-bottom: 15px;
   }
   .icon-container {
-    width: 130px;
-    height: 120px;
-    margin-left: 30px;
-    margin-top: -10px;
+    width: 120px;
+    height: 110px;
+    margin-left: 15px;
+    margin-top: 0px;
   }
   .deskripsi {
     margin-left: -70px;
@@ -4207,7 +4207,7 @@ p {
     line-height: 30px;
     padding: 10px;
     text-align: justify;
-    width: 410px;
+    width: 370px;
   }
 
   .DDLH {
@@ -4221,7 +4221,7 @@ p {
     margin-left: -60px;
     margin-top: 20px;
     padding: 12px;
-    width: 270px;
+    width: 250px;
   }
 
   .judul-text2 {
@@ -4328,7 +4328,7 @@ p {
 
   .deskripsi {
     font-size: 11px;
-    line-height: 25px;
+    line-height: 20px;
     top: -60px;
     left: 30px;
   }
@@ -4461,7 +4461,7 @@ p {
   }
 
   .judultentangkami {
-    left: -510px;
+    left: -525px;
     padding: 30px 30px;
     top: -5px;
   }
@@ -4480,14 +4480,15 @@ p {
     height: auto;
     margin-left: 40px;
     top: -40px;
-    left: -5px;
+    left: -20px;
   }
 
   .isitentangkami2 {
     font-size: 6px;
-    width: 140px;
-    left: 20px;
+    width: 130px;
+    left: 10px;
     top: 70px;
+    line-height: 18px;
   }
 
   .penyusun {
@@ -4496,7 +4497,7 @@ p {
   }
 
   .Timpenyusun {
-    margin-left: -220px;
+    margin-left: -250px;
     margin-top: -100px;
     font-size: 10px;
   }
@@ -4504,13 +4505,13 @@ p {
   .penyusun-top-row,
   .penyusun-bottom-row {
     gap: 5px;
-    margin-right: -385px;
+    margin-right: -370px;
     margin-bottom: -90px;
   }
 
   .flip-card {
-    width: 45px;
-    height: 50px;
+    width: 40px;
+    height: 60px;
   }
 
   .flip-card img {
@@ -4536,10 +4537,10 @@ p {
   .tombol-tentang-kami {
     padding: 10px 20px;
     border-radius: 8px;
-    transform: translate(-25px, 40px);
+    transform: translate(0px, 40px);
   }
 }
-/* Additional media query for very small screens */
+
 @media screen and (max-width: 320px) {
   .kotakd3tlh {
     width: 100%;
@@ -4556,32 +4557,32 @@ p {
     margin-bottom: 15px;
   }
   .icon-container {
-    width: 130px;
-    height: 120px;
+    width: 110px;
+    height: 100px;
     margin-left: 20px;
-    margin-top: -10px;
+    margin-top: 10px;
   }
   .deskripsi {
-    margin-left: -70px;
+    margin-left: -60px;
     margin-top: -25px;
-    line-height: 30px;
+    line-height: 25px;
     padding: 10px;
     text-align: justify;
-    width: 355px;
+    width: 320px;
   }
 
   .DDLH {
-    margin-left: -60px;
+    margin-left: -50px;
     margin-top: 20px;
     padding: 20px;
     margin-bottom: 0px;
   }
 
   .SID3TLH {
-    margin-left: -60px;
-    margin-top: 20px;
+    margin-left: -50px;
+    margin-top: 0px;
     padding: 12px;
-    width: 230px;
+    width: 200px;
   }
 
   .judul-text2 {
@@ -4811,7 +4812,7 @@ p {
 
   .group-60 {
     display: flex;
-    margin-left: 20px;
+    margin-left: 2px;
     width: calc(100% - 10px);
   }
 
@@ -4821,7 +4822,7 @@ p {
   }
 
   .judultentangkami {
-    left: -535px;
+    left: -570px;
     padding: 30px 30px;
     top: -5px;
   }
@@ -4840,13 +4841,13 @@ p {
     height: auto;
     margin-left: 40px;
     top: -40px;
-    left: -25px;
+    left: -35px;
   }
 
   .isitentangkami2 {
     font-size: 5px;
-    width: 110px;
-    left: 10px;
+    width: 100px;
+    left: 5px;
     top: 60px;
   }
 
@@ -4863,14 +4864,14 @@ p {
 
   .penyusun-top-row,
   .penyusun-bottom-row {
-    gap: 5px;
-    margin-right: -350px;
+    gap: 3px;
+    margin-right: -330px;
     margin-bottom: -90px;
   }
 
   .flip-card {
     width: 40px;
-    height: 60px;
+    height: 65px;
   }
 
   .flip-card img {
@@ -4896,7 +4897,7 @@ p {
   .tombol-tentang-kami {
     padding: 10px 20px;
     border-radius: 8px;
-    transform: translate(-25px, 40px);
+    transform: translate(-5px, 40px);
   }
 }
 

@@ -383,7 +383,7 @@ const MapWithChart = () => {
     });
   };
 
-  const handleMetadata = (selectedGroup) => {
+  const handleDownloadMetadata = (selectedGroup) => {
     const filename = metadataFileMap[selectedGroup];
 
     if (!filename) {
@@ -704,15 +704,18 @@ const MapWithChart = () => {
               )}
             </div>
           ) : (
-            <p
+            <div
               style={{
-                textAlign: "center",
-                marginTop: "250px",
-                color: "#777",
+                display: "flex",
+                justifyContent: "center",
+                alignItems: "center",
+                height: "100vh",
               }}
             >
-              Klik wilayah pada peta untuk menampilkan chart!
-            </p>
+              <p style={{ textAlign: "center", color: "#777" }}>
+                Klik wilayah pada peta untuk menampilkan chart!
+              </p>
+            </div>
           )}
           <div className="download-container">
             <button
